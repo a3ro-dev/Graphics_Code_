@@ -1,0 +1,11 @@
+discord
+PyNaCl
+ffmpeg
+youtube_dl
+git+https://gitlab.com/Gorialis/jishaku@master 
+discord.py 
+asyncio
+apscheduler
+discord-ext-menus
+wavelink
+aiosqlite
