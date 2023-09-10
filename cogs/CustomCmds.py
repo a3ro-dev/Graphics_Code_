@@ -284,7 +284,7 @@ desc1 = """
 ## RULES OF GRAPHICS CODE 2.0
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
-               ## Moderation System
+               **Moderation System**
 
 <:reddrop:1064512185721704458>  __BASIC INFORMATION__
 > Moderation Team will impose strikes according to the below mentioned __Strike Policy__ taking into account your history & graveness of your violation of the rules. All actions are taken after thorough investigation & collection of evidence.
