@@ -33,7 +33,7 @@ class CustomCmds(commands.Cog):
 
         embed = discord.Embed(color=rcfg.CLR, timestamp=discord.utils.utcnow())
         embed.set_footer(text="Last updated on")
-        embed.title = "GRAPHICS CODE ROSTER"
+        embed.title = "GRAPHICS CODE 2.0 ROSTER"
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDERS:__ ', value=f'{foun}' or 'None',
                         inline=False)
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
@@ -70,7 +70,7 @@ class CustomCmds(commands.Cog):
         dnrs = ", \n".join([member.mention for member in DESIGNERS.members])
 
         embed = discord.Embed(color=rcfg.CLR)
-        embed.title = "GRAPHICS CODE ROSTER"
+        embed.title = "GRAPHICS CODE 2.0 ROSTER"
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDERS:__ ', value=f'{foun}' or 'None',
                         inline=False)
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
@@ -279,7 +279,7 @@ async def setup(bot):
     await bot.add_cog(CustomCmds(bot))
 
 desc1 = """
-ㅤㅤ     **RULES OF GRAPHICS CODE**
+ㅤㅤ     **RULES OF GRAPHICS CODE 2.0**
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
                <:_:1034833534164140104>**Moderation System**<:_:1034833534164140104>
@@ -339,7 +339,7 @@ desc3 = """
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧"""
 
 desc4 = """
-ㅤㅤ     **RULES OF GRAPHICS CODE**
+ㅤㅤ     **RULES OF GRAPHICS CODE 2.0**
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
                <:_:1034833534164140104>**Things to be Noted**<:_:1034833534164140104>

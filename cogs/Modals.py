@@ -7,7 +7,7 @@ import config as cfg
 
 
 async def modal_helper(value, art):
-    db = await aiosqlite.connect('/home/container/db/points.db')
+    db = await aiosqlite.connect('/home/ubuntu/graphics-code-bott/db/points.db')
     cursor = await db.cursor()
     await cursor.execute("SELECT * FROM points WHERE user_id = ?", (art,))
     try:

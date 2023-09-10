@@ -66,7 +66,7 @@ class PointsCog(commands.Cog):
             print(res)
         e = discord.Embed(title="Points",
                           description=f"**Displaying FX points of {member.mention}**\n\nPoints:- `{res[1]}`",
-                          color=0xFFFFFF)
+                          color=cfg.CLR)
         await ctx.send(embed=e)
 
     @commands.command(name="leaderboard", aliases=["lb", "pointslb", "plb"])
@@ -85,7 +85,7 @@ class PointsCog(commands.Cog):
         fifth = res[4]
         embed = discord.Embed(title="Leaderboard",
                               description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
-                              color=0xFFFFFF)
+                              color=cfg.CLR)
         embed.set_image(
             url="https://media.discordapp.net/attachments/992660602059247616/1026674669849424002/ezgif.com-gif-maker_12.gif")
         embed.set_footer(text=ctx.guild.name, icon_url=ctx.guild.icon.url)
@@ -113,7 +113,7 @@ class PointsCog(commands.Cog):
             await self.db.commit()
 
         embed = discord.Embed(description=f"```Points added```\n**{points} points were added to {member.mention}**",
-                              color=0xFFFFFF)
+                              color=cfg.CLR)
         await ctx.send(embed=embed)
 
     @commands.command(name="delp")
@@ -130,7 +130,7 @@ class PointsCog(commands.Cog):
             await self.db.commit()
 
         embed = discord.Embed(description=f"```Points added```\n**{points} points were removed from {member.mention}**",
-                              color=0xFFFFFF)
+                              color=cfg.CLR)
         await ctx.send(embed=embed)
 
     @tasks.loop(hours=8.0)
@@ -146,7 +146,7 @@ class PointsCog(commands.Cog):
         fifth = res[4]
         embed = discord.Embed(title="Leaderboard",
                               description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
-                              color=0xFFFFFF)
+                              color=cfg.CLR)
         embed.set_image(
             url="https://media.discordapp.net/attachments/992660602059247616/1026674669849424002/ezgif.com-gif-maker_12.gif")
         await cursor.execute("SELECT points FROM points ORDER BY points DESC")

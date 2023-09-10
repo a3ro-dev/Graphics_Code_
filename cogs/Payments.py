@@ -43,7 +43,7 @@ class INRButtons(discord.ui.View):
 
     @discord.ui.button(label='GOOGLE PAY', style=discord.ButtonStyle.grey, custom_id="button:GPAY", emoji="<:_:1019265091369193603>")
     async def GPAY_BUTTON(self, interaction: discord.Interaction, button: discord.ui.Button):
-        embed = discord.Embed(title="PAYTM QR CODE", color=cfg.CLR)
+        embed = discord.Embed(title="GOOGLE PAY QR CODE", color=cfg.CLR)
         embed.set_footer(icon_url=interaction.guild.icon, text="SCAN ME")
         embed.set_image(
             url=cfg.GPAYQR)
