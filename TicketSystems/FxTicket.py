@@ -222,13 +222,13 @@ class Orders(commands.Cog):
     async def order_button(self, ctx):
         """Sends Order Button."""
         embed = discord.Embed(title='Place Order', description=f"""⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
-               <a:emoji_355:1035180578057764864> **__ORDERING PANEL__** <a:emoji_355:1035180578057764864>
+               ## ORDERING PANEL
 
 > For creating an order ticket, **__just click on either of the two buttons [GFX & VFX]__** corresponding to the type of design you want to order & **__a designated ticket will get created automatically__** by the bot. 
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧""")
         embed.set_image(
-            url="https://media.discordapp.net/attachments/992660600746422312/1035500706565726260/orderfx.gif")
+            url="https://media.discordapp.net/attachments/1150321238997205002/1150359107346386985/order.png?width=1025&height=202")
         embed.colour = (cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
 
