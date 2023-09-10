@@ -262,14 +262,16 @@ class CustomCmds(commands.Cog):
     @commands.command()
     @commands.has_permissions(administrator=True)
     async def rules_embed(self, ctx):
-        embed1=discord.Embed(color=0xA81C25)
+        embed1=discord.Embed(color=cfg.CLR)
         embed1.description = desc1
-        embed2=discord.Embed(color=0xA81C25)
+        embed2=discord.Embed(color=cfg.CLR)
         embed2.description = desc2
-        embed3=discord.Embed(color=0xA81C25)
+        embed3=discord.Embed(color=cfg.CLR)
         embed3.description = desc3
-        embed4=discord.Embed(color=0xA81C25)
+        embed4=discord.Embed(color=cfg.CLR)
         embed4.description = desc4
+        embed5 = discord.Embed(color=cfg.CLR)
+        embed5.set_image(url="https://cdn.discordapp.com/attachments/1150321238997205002/1150333919112216606/rules.png")
         embeds = [embed1, embed2, embed3, embed4]
         await ctx.send(embeds=embeds)
         await ctx.message.delete()

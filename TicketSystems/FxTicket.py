@@ -142,7 +142,7 @@ class Buttons(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(emoji='<:gfx:1024639467262333008>', style=discord.ButtonStyle.gray, custom_id='Gray:GFX')
+    @discord.ui.button(emoji='<:gfx:1064863522011488266>', style=discord.ButtonStyle.gray, custom_id='Gray:GFX')
     async def GFX_button(self, interaction=discord.Interaction, button=discord.ui.Button):
         artists = interaction.guild.get_role(cfg.ARTISTS)
         ticket_supp = interaction.guild.get_role(cfg.SUPPORT)
@@ -173,7 +173,7 @@ class Buttons(discord.ui.View):
         db.commit()
         db.commit()
 
-    @discord.ui.button(emoji='<:vfx:1024639458970189946>', style=discord.ButtonStyle.gray, custom_id='Gray:VFX')
+    @discord.ui.button(emoji='<:vfx:1064863743802081280>', style=discord.ButtonStyle.gray, custom_id='Gray:VFX')
     async def VFX_button(self, interaction=discord.Interaction, button=discord.ui.Button):
         artists = interaction.guild.get_role(cfg.ARTISTS)
         ticket_supp = interaction.guild.get_role(cfg.SUPPORT)
@@ -193,7 +193,7 @@ class Buttons(discord.ui.View):
 
         embed = discord.Embed(title='VFX Ticket',
                               description=f'Ticket Opened by {client.mention}\nHelp will be with you shortly.\nCheck pricing and other information by using `%procedure`, `%price`, `%form`.',
-                              color=discord.Color(0x2F3136))
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         message = await channel.send(content=f'{client.mention} |', embed=embed)
         thread = await message.create_thread(name=f"VFX-{client.name} private discussion", auto_archive_duration=60)
@@ -240,7 +240,7 @@ class Orders(commands.Cog):
     @commands.command(name='claim')
     async def claim_command(self, ctx):
         """```Claims an order. Only works in Ticket Channels.
-        Can     only be claimed by users having <@&905682417589829642>.
+        Can     only be claimed by users having <@&992651587577196686>.
         To override this command, administrator can user `assign` command to assign the project to another artist.```"""
         channels = db.column('SELECT CHANNEL FROM orders')
         if ctx.channel.id in channels:
@@ -273,7 +273,7 @@ class Orders(commands.Cog):
 
         embed = discord.Embed(title='Order Claimed.',
                               description=f'Your order in <#{ctx.channel.id}> was claimed by {ctx.author.mention}.',
-                              color=0x00FF00)
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         client_id = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', ctx.channel.id)
         client = ctx.guild.get_member(client_id)
@@ -323,7 +323,7 @@ class Orders(commands.Cog):
 
         embed = discord.Embed(title='Order Unclaimed.',
                               description=f'You successfully unclaimed this order, a new artist may now be assigned.',
-                              color=discord.Color(0x2F3136))
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
 
         client_id = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', ctx.channel.id)
