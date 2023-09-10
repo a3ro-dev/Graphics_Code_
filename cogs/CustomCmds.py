@@ -271,7 +271,7 @@ class CustomCmds(commands.Cog):
         embed4=discord.Embed(color=cfg.CLR)
         embed4.description = desc4
         embed5 = discord.Embed(color=cfg.CLR)
-        embed5.set_image(url="https://cdn.discordapp.com/attachments/1150321238997205002/1150333919112216606/rules.png")
+        embed5.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150359108105535528/rules.png?width=1025&height=202")
         embeds = [embed1, embed2, embed3, embed4, embed5]
         await ctx.send(embeds=embeds)
         await ctx.message.delete()
