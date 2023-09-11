@@ -66,18 +66,18 @@ class WELCOME(commands.Cog):
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 **Thankyou for Joining as __{member.guild.member_count}th__ Member!**
 
-<a:_:1034357651703865424> __Go through the rules you need to follow__
-<a:_:1034357783690236025> **| Server Guidelines:** <#905678231896723486>
-<a:_:1034357651703865424> __Checkout what all we offer__
-<a:_:1034357783690236025> **| FX Store:** <#1064869618772090951>
-<a:_:1034357651703865424> __Get your creative solutions__
-<a:_:1034357783690236025> **| Order Placement:** <#992660626272964629>
-<a:_:1034357651703865424> __Join us as a Designer__
-<a:_:1034357783690236025> **| Apply as Designer:** <#992660663858122752>
-<a:_:1034357651703865424> __Join us as a Staff Member__
-<a:_:1034357783690236025> **| Apply as Staff:** <#992660662415269919>
-<a:_:1034357651703865424> __Show some love & support back__
-<a:_:1034357783690236025> **| Support Us:** <#992660615833325629>
+<a:fancyarr:1064443589825933343> __Go through the rules you need to follow__
+<:red_dot:1150768677294194730>**| Server Guidelines:** <#905678231896723486>
+<a:fancyarr:1064443589825933343> __Checkout what all we offer__
+<:red_dot:1150768677294194730>**| FX Store:** <#1064869618772090951>
+<a:fancyarr:1064443589825933343> __Get your creative solutions__
+<:red_dot:1150768677294194730>**| Order Placement:** <#992660626272964629>
+<a:fancyarr:1064443589825933343> __Join us as a Designer__
+<:red_dot:1150768677294194730>**| Apply as Designer:** <#992660663858122752>
+<a:fancyarr:1064443589825933343> __Join us as a Staff Member__
+<:red_dot:1150768677294194730>**| Apply as Staff:** <#992660662415269919>
+<a:fancyarr:1064443589825933343> __Show some love & support back__
+<:red_dot:1150768677294194730>**| Support Us:** <#992660615833325629>
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 **HAVE A GOOD STAY ♡**"""
         embed.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150359106008395846/welcome.png?width=1025&height=202")
