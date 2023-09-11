@@ -488,56 +488,56 @@ class Orders(commands.Cog):
     async def price(self, ctx):
         """```Displays the rough pricing for varity of work styles.```"""
         embed = discord.Embed(color=(cfg.CLR))
-        embed.description = ("""**GRAPHICS CODE FX STORE**
+        embed.description = ("""## GRAPHICS CODE FX STORE
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
-                  <:emoji_353:1035116748111888406>**Graphic Designs**<:emoji_353:1035116748111888406>
+                  <:red_dot:1150768677294194730>**Graphic Designs**<:red_dot:1150768677294194730>
 
-<a:emoji_354:1035116778004688946> **__PROFILE PICTURE__ [2$ - 10$]**
-<a:emoji_354:1035116778004688946> **__CONCEPT LOGO__ [8$]**
-<a:emoji_354:1035116778004688946> **__LOGO DESIGN__ [4$ - 10$]**
-<a:emoji_354:1035116778004688946> **__BANNER__ [3$]**
-<a:emoji_354:1035116778004688946> **__HEADER__ [5$]**
-<a:emoji_354:1035116778004688946> **__POSTER__ [4$]**
-<a:emoji_354:1035116778004688946> **__ROSTER__ [6$]**
-<a:emoji_354:1035116778004688946> **__PRE-MADE MASCOT__ [3$]**
-<a:emoji_354:1035116778004688946> **__CUSTOM MASCOT__ [6$]**
-<a:emoji_354:1035116778004688946> **__VECTOR__ [12$]**
-<a:emoji_354:1035116778004688946> **__THUMBNAIL__ [5$]**
-<a:emoji_354:1035116778004688946> **__STATIC OVERLAY__ [3$]** 
-<a:emoji_354:1035116778004688946> **__REVAMP__ [20$]**
-
-⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
-
-              <:emoji_353:1035116748111888406>**Visual Effect Designs**<:emoji_353:1035116748111888406>
-
-<a:emoji_354:1035116778004688946> **__ANIMATED LOGO/GIF__ [6$]**
-<a:emoji_354:1035116778004688946> **__ANIMATED OVERLAY__ [4$]**
-<a:emoji_354:1035116778004688946> **__INTRO__ [8$]**
-<a:emoji_354:1035116778004688946> **__OUTRO__ [8$]**
-<a:emoji_354:1035116778004688946> **__MONTAGE/EDIT__ [6$ PER 60 SEC]**
-
-⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
-⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
-
-       <:emoji_353:1035116748111888406>**Payment Methods Accepted**<:emoji_353:1035116748111888406>
-
-<a:emoji_354:1035116778004688946> **__PAYTM__ <:Paytm:1026413314386968616>**
-<a:emoji_354:1035116778004688946> **__GOOGLE PAY__ <:gpay:1019265091369193603>**
-<a:emoji_354:1035116778004688946> **__FAMPAY__ <:fampay:1019265003326550116>**
-<a:emoji_354:1035116778004688946> **__UNIFIED PAYMENTS INTERFACE__ <:upi:1024330100616986784>**
-<a:emoji_354:1035116778004688946> **__PAYPAL__ <:paypal:1019265189465554974>**
-<a:emoji_354:1035116778004688946> **__NITRO__ <a:NitroBoosterGC:1026359708447162469>**
-<a:emoji_354:1035116778004688946> **__NITRO CLASSIC__ <a:NitroClassic:1026359610464010251>**
-<a:emoji_354:1035116778004688946> **__GIFTCARD__ <:giftcard:1026414601920839771>**
+<:red_dot:1150768677294194730> **__PROFILE PICTURE__ [2$ - 10$]**
+<:red_dot:1150768677294194730> **__CONCEPT LOGO__ [8$]**
+<:red_dot:1150768677294194730> **__LOGO DESIGN__ [4$ - 10$]**
+<:red_dot:1150768677294194730> **__BANNER__ [3$]**
+<:red_dot:1150768677294194730> **__HEADER__ [5$]**
+<:red_dot:1150768677294194730> **__POSTER__ [4$]**
+<:red_dot:1150768677294194730> **__ROSTER__ [6$]**
+<:red_dot:1150768677294194730> **__PRE-MADE MASCOT__ [3$]**
+<:red_dot:1150768677294194730> **__CUSTOM MASCOT__ [6$]**
+<:red_dot:1150768677294194730> **__VECTOR__ [12$]**
+<:red_dot:1150768677294194730> **__THUMBNAIL__ [5$]**
+<:red_dot:1150768677294194730> **__STATIC OVERLAY__ [3$]** 
+<:red_dot:1150768677294194730> **__REVAMP__ [20$]**
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
-                <:emoji_353:1035116748111888406>**Things to be Noted**<:emoji_353:1035116748111888406>
+              <:red_dot:1150768677294194730>**Visual Effect Designs**<:red_dot:1150768677294194730>
 
-<a:emoji_354:1035116778004688946> **__NOTE - 1__**
+<:red_dot:1150768677294194730> **__ANIMATED LOGO/GIF__ [6$]**
+<:red_dot:1150768677294194730> **__ANIMATED OVERLAY__ [4$]**
+<:red_dot:1150768677294194730> **__INTRO__ [8$]**
+<:red_dot:1150768677294194730> **__OUTRO__ [8$]**
+<:red_dot:1150768677294194730> **__MONTAGE/EDIT__ [6$ PER 60 SEC]**
+
+⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
+⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
+
+       <:red_dot:1150768677294194730>**Payment Methods Accepted**<:red_dot:1150768677294194730>
+
+<:red_dot:1150768677294194730> **__PAYTM__ <:paytm:1064445815688544258>**
+<:red_dot:1150768677294194730> **__GOOGLE PAY__ <:gpay:1064445864598323200>**
+<:red_dot:1150768677294194730> **__FAMPAY__ <:fampay:1064445925189222521>**
+<:red_dot:1150768677294194730> **__UNIFIED PAYMENTS INTERFACE__ <:upi:1064446375997227009>**
+<:red_dot:1150768677294194730> **__PAYPAL__ <:paypal:1064445964519223316>**
+<:red_dot:1150768677294194730> **__NITRO__ <a:nitro:1064446026200649789>**
+<:red_dot:1150768677294194730> **__NITRO CLASSIC__ <a:nitroclassic:853221718158999562>**
+<:red_dot:1150768677294194730> **__GIFTCARD__ <:giftcard:1064446574501056583>**
+
+⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
+
+                <:red_dot:1150768677294194730>**Things to be Noted**<:red_dot:1150768677294194730>
+
+<:red_dot:1150768677294194730> **__NOTE - 1__**
 > Use slash command /payment to get the list of payment methods being accepted at the moment.
-<a:emoji_354:1035116778004688946> **__NOTE - 2__**
+<:red_dot:1150768677294194730> **__NOTE - 2__**
 > Pricing of design depends on the complexity of the order, time being invested to provide the best design, assets/resources needed to fulfill the needs of the client & other basic things. Therefore, the pricing mentioned above in the list is just an estimate/approximate value. The list doesn't not conclude the final pricing.
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧""")

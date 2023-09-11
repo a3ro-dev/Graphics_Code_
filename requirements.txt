@@ -9,3 +9,4 @@ apscheduler
 discord-ext-menus
 wavelink
 aiosqlite
+db.py
