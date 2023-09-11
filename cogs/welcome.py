@@ -48,15 +48,15 @@ class WELCOME(commands.Cog):
     async def on_member_join(self, member: discord.Member):
         embed=discord.Embed(color=cfg.CLR, title="ㅤ**WELCOME TO GRAPHICS CODE**")
         button1 = Button(label='Rules', url="https://discord.com/channels/905665593267609631/905678231896723486",
-                       emoji='<:Rules:1026538712147972216>')
+                       emoji='<:rules:1064514958278266931>')
 
-        button2 = Button(label='Self-Roles',
-                       url="https://discord.com/channels/905665593267609631/992660613790715925",
-                       emoji='<:self_role:1026674149709590579>')
+        button2 = Button(label='Info',
+                       url="https://discord.com/channels/905665593267609631/992660615833325629",
+                       emoji='<:gc:1150762439789527100>')
 
         button3 = Button(label='Store',
-                       url="https://discord.com/channels/905665593267609631/992660625312460860",
-                       emoji='<:store:1026538835951231096>')
+                       url="https://discord.com/channels/905665593267609631/992660626272964629",
+                       emoji='<:store:1064877285859147817>')
 
         view = View()
         view.add_item(button1)
@@ -68,10 +68,8 @@ class WELCOME(commands.Cog):
 
 <a:_:1034357651703865424> __Go through the rules you need to follow__
 <a:_:1034357783690236025> **| Server Guidelines:** <#905678231896723486>
-<a:_:1034357651703865424> __Customize yourself easily__
-<a:_:1034357783690236025> **| Self Roles:** <#992660613790715925>
 <a:_:1034357651703865424> __Checkout what all we offer__
-<a:_:1034357783690236025> **| FX Store:** <#992660625312460860>
+<a:_:1034357783690236025> **| FX Store:** <#1064869618772090951>
 <a:_:1034357651703865424> __Get your creative solutions__
 <a:_:1034357783690236025> **| Order Placement:** <#992660626272964629>
 <a:_:1034357651703865424> __Join us as a Designer__
@@ -82,7 +80,7 @@ class WELCOME(commands.Cog):
 <a:_:1034357783690236025> **| Support Us:** <#992660615833325629>
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 **HAVE A GOOD STAY ♡**"""
-        embed.set_image(url="https://media.discordapp.net/attachments/992660600746422312/1026378384437161984/welcome.gif")
+        embed.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150359106008395846/welcome.png?width=1025&height=202")
         embed.set_footer(text=f'{member.guild.name} | {member.guild.id}', icon_url=member.guild.icon.url)
         channel = member.guild.get_channel(cfg.WELCOME)
         await channel.send(content=member.mention,embed=embed, view=view)
@@ -96,7 +94,7 @@ class WELCOME(commands.Cog):
         description = (f'**{member.name}** just left us.\n'
                        f"We're now **{len(member.guild.members)}** members.\n")
         embed = discord.Embed(
-            title='Farewell', description=description, color=discord.Color(0xFFFFFF))
+            title='Farewell', description=description, color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         embed.set_footer(
             text=f'{member.guild.name} | {member.guild.id}', icon_url=member.guild.icon.url)

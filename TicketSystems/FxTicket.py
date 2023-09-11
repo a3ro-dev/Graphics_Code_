@@ -1,13 +1,10 @@
 import asyncio
 import datetime
-
 import aiosqlite
 import discord
 from discord.ext import commands
-
 import config as cfg
 from db import db
-
 
 # Receipt Format
 
@@ -20,7 +17,7 @@ from db import db
 # Order Amount : [The Amount Paid By The Client]
 
 
-async def modal_helper(value, art):
+async def modal_helper(value, art): 
     db = await aiosqlite.connect('/home/container/db/points.db')
     cursor = await db.cursor()
     await cursor.execute("SELECT * FROM points WHERE user_id = ?", (art,))
@@ -30,7 +27,7 @@ async def modal_helper(value, art):
             points = res[1] + 2
         elif value.lower() == "gfx":
             points = res[1] + 1
-        else:
+        else: 
             return ValueError
         await cursor.execute("UPDATE points SET points = ? WHERE user_id = ?", (points, art))
         await db.commit()
@@ -92,7 +89,7 @@ class Receipt_Modal(discord.ui.Modal, title="Billing up.."):
 
         embed = discord.Embed(title="Order Receipt",
                               description=f"This is the receipt of the order placed by <@{client}>\n\n**ORDER DETAILS**\n**ARTIST**:- <@{art}>\n**CLIENT** :- <@{client}>\nDate of Placement :- {placement_date if placement_date is not None else 'Not found'}\nDate of Completion:- {datetime.datetime.now().strftime('%d / %m / %Y')}\nOrder :- {self.order_type.value}\nCategory Of Design:- {self.categ.value}\nStyle of Order:- {self.style.value}\nMethod Of Payment:- {self.payment.value}\n",
-                              color=0xFFFFFF)
+                              color=cfg.CLR)
         try:
             embed.set_image(url=self.image.value)
         except discord.errors.HTTPException:
@@ -104,7 +101,7 @@ class Receipt_Modal(discord.ui.Modal, title="Billing up.."):
                 f"{interaction.user.mention} The argument you gave for order type was invalid")
 
         embed.set_footer(text=interaction.guild.name, icon_url=interaction.guild.icon.url)
-        channel = discord.utils.get(interaction.guild.text_channels, id=992698420164825199)
+        channel = discord.utils.get(interaction.guild.text_channels, id=1068049403098693682)
         await channel.send(embed=embed)
         await interaction.response.send_message(
             f"The receipt was sent to {channel} and the points was updated accordingly.")
@@ -481,8 +478,8 @@ class Orders(commands.Cog):
                        f'In order to cancel your order, you can click **[Cancel]** Button at any point in time and the artists will be notified.\n'
                        f'In case the artist is unable to Complete your order, he/she will **[Unclaim]** your order and you need to wait till another artist accepts your request.\n'
                        f'In case of incompatibiliy, the artists may **[Reject]** your order and the ticket will be closed.')
-        embed = discord.Embed(title='Procedure', description=description, color=discord.Color(0x2F3136))
-        embed.set_image(url="https://media.discordapp.net/attachments/992660602059247616/1026674654171103272/store.gif")
+        embed = discord.Embed(title='Procedure', description=description, color=cfg.CLR)
+        embed.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150359106473951342/store.png?width=1025&height=202")
         embed.timestamp = discord.utils.utcnow()
         embed.set_footer(text=f'Requested by {ctx.author.name} | {ctx.author.id}')
         await ctx.send(embed=embed)
@@ -545,7 +542,7 @@ class Orders(commands.Cog):
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧""")
         embed.set_image(
-            url="https://media.discordapp.net/attachments/992660600746422312/1026356068546261072/pricing.gif")
+            url="https://media.discordapp.net/attachments/1150321238997205002/1150359775993925673/pricing.png?width=1025&height=202")
         await ctx.send(embed=embed)
 
     @commands.command()
@@ -560,7 +557,7 @@ class Orders(commands.Cog):
         embed.timestamp = discord.utils.utcnow()
         embed.set_author(name=ctx.guild.name, icon_url=ctx.guild.icon.url)
         embed.set_image(
-            url="https://cdn.discordapp.com/attachments/992660605385310230/1006231192019931156/1656235571024.jpg")
+            url="https://media.discordapp.net/attachments/1150321238997205002/1150359107677728819/form.png?width=1025&height=202")
         await ctx.send(embed=embed)
 
 
