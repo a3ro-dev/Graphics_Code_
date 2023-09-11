@@ -47,7 +47,7 @@ class PointsCog(commands.Cog):
         self.bot.loop.create_task(self.connect_database())
 
     async def connect_database(self):
-        self.db = await aiosqlite.connect('/home/container/db/points.db')
+        self.db = await aiosqlite.connect('/home/ubuntu/graphics-code-bott/db/points.db')
 
     @commands.command(name="points")
     async def points_command(self, ctx, member: discord.Member = None):
@@ -87,12 +87,12 @@ class PointsCog(commands.Cog):
                               description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
                               color=cfg.CLR)
         embed.set_image(
-            url="https://media.discordapp.net/attachments/992660602059247616/1026674669849424002/ezgif.com-gif-maker_12.gif")
+            url="https://media.discordapp.net/attachments/1150321238997205002/1150321298560536586/leaderboardgif.gif")
         embed.set_footer(text=ctx.guild.name, icon_url=ctx.guild.icon.url)
         await cursor.execute("SELECT points FROM points ORDER BY points DESC")
         points = await cursor.fetchall()
         msg = await ctx.send(embed=embed, view=LBV(self.db))
-        if ctx.channel.id == 1025778751176454144:
+        if ctx.channel.id == 1150284418947219586:
             try:
                 msg_id.clear()
             except:
@@ -148,7 +148,7 @@ class PointsCog(commands.Cog):
                               description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
                               color=cfg.CLR)
         embed.set_image(
-            url="https://media.discordapp.net/attachments/992660602059247616/1026674669849424002/ezgif.com-gif-maker_12.gif")
+            url="https://media.discordapp.net/attachments/1150321238997205002/1150321298560536586/leaderboardgif.gif")
         await cursor.execute("SELECT points FROM points ORDER BY points DESC")
         points = await cursor.fetchall()
         msg = await self.ctx.fetch_message(message_id)
