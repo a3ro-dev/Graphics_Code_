@@ -214,12 +214,12 @@ class Orders(commands.Cog):
     async def connect_database(self):
         self.db = await aiosqlite.connect('/home/ubuntu/graphics-code-bott/points.db')
 
-    @commands.command(name='OrderButton', hidden=False)
+    @commands.command(name='OrderButton', hidden=True)
     @commands.has_permissions(administrator=True)
     async def order_button(self, ctx):
         """Sends Order Button."""
         embed = discord.Embed(title='Place Order', description=f"""⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
-               ## ORDERING PANEL
+               ##ORDERING PANEL
 
 > For creating an order ticket, **__just click on either of the two buttons [GFX & VFX]__** corresponding to the type of design you want to order & **__a designated ticket will get created automatically__** by the bot. 
 
