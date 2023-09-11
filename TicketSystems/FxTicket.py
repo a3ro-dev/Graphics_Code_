@@ -219,7 +219,7 @@ class Orders(commands.Cog):
     async def order_button(self, ctx):
         """Sends Order Button."""
         embed = discord.Embed(title='Place Order', description=f"""⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
-               ##ORDERING PANEL
+               **ORDERING PANEL**
 
 > For creating an order ticket, **__just click on either of the two buttons [GFX & VFX]__** corresponding to the type of design you want to order & **__a designated ticket will get created automatically__** by the bot. 
 
