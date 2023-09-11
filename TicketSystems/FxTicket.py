@@ -212,9 +212,9 @@ class Orders(commands.Cog):
         self.bot.add_view(Buttons())
 
     async def connect_database(self):
-        self.db = await aiosqlite.connect('/home/container/db/points.db')
+        self.db = await aiosqlite.connect('/home/ubuntu/graphics-code-bott/points.db')
 
-    @commands.command(name='OrderButton', hidden=True)
+    @commands.command(name='OrderButton', hidden=False)
     @commands.has_permissions(administrator=True)
     async def order_button(self, ctx):
         """Sends Order Button."""
