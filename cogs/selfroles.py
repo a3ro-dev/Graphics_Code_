@@ -7,20 +7,20 @@ from selenium.webdriver.common.actions import interaction
 import config as cfg
 
 ping_roles_description = """
-<a:_:932299160881885205> <a:announcement:1151139265850396712> <@&992656872974852146> 
-<a:_:994538693807317002> <a:partnership:1151139524232097904> <@&992657042751889458> 
-<a:_:994525998324392006> <a:giveaway:1151139604271992925> <@&992657167901544468> 
-<a:_:936620457648603186> <a:evento:1151139687566676010> <@&992657416653131796> 
+<a:fancyarr:1064443589825933343>  <a:announcement:1151139265850396712> <@&992656872974852146> 
+<a:fancyarr:1064443589825933343> <a:partnership:1151139524232097904> <@&992657042751889458> 
+<a:fancyarr:1064443589825933343>  <a:giveaway:1151139604271992925> <@&992657167901544468> 
+<a:fancyarr:1064443589825933343>  <a:evento:1151139687566676010> <@&992657416653131796> 
 """
 
 age_roles_description = """
-<:_:940174397224923206> <a:_:1151140903172460575> <@&994527158875725846>
-<:_:940174349187575809> <a:_:1151140927742672947> <@&994527154761105438> 
+<a:fancyarr:1064443589825933343>  <a:_:1151140903172460575> <@&994527158875725846>
+<a:fancyarr:1064443589825933343>  <a:_:1151140927742672947> <@&994527154761105438> 
 """
 
 gender_roles_description = """
-<a:_:942070637927759932> <a:male:1151141709808414763> <@&994527162952597554> 
-<a:_:942070713987260426> <a:female:1151141787419803759> <@&994527166907818054>
+<a:fancyarr:1064443589825933343>  <a:male:1151141709808414763> <@&994527162952597554> 
+<a:fancyarr:1064443589825933343>  <a:female:1151141787419803759> <@&994527166907818054>
 """
 
 class PING_BUTTONS(discord.ui.View):
@@ -200,7 +200,7 @@ async def setup(bot):
 # class PING_Dropdown(discord.ui.Select):
 #     def __init__(self):
 #         options = [
-#             discord.SelectOption(label='Announcement', description=f'Get this role', emoji='<a:_:932299160881885205>'),
+#             discord.SelectOption(label='Announcement', description=f'Get this role', emoji='<a:fancyarr:1064443589825933343> '),
 #             discord.SelectOption(label='Giveaway', description='Get this role', emoji='<a:_:994538693807317002>'),
 #             discord.SelectOption(label='Event', description='Get this role', emoji='<a:_:994525998324392006>'),
 #             discord.SelectOption(label='Partnership', description='Get this role', emoji='<a:_:936620457648603186>'),
