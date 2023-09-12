@@ -111,7 +111,7 @@ class OrderingModalViewBut(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(emoji='<:graphicscode:985936754446073958>', style=discord.ButtonStyle.gray, custom_id='applybut')
+    @discord.ui.button(emoji='<:gc:1150762439789527100>', style=discord.ButtonStyle.gray, custom_id='applybut')
     async def callmodalcallback(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_modal(OrderingCallModalView())
 
