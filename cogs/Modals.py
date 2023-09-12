@@ -47,7 +47,7 @@ class Modals(commands.Cog):
         embed = discord.Embed(title="Order form",
                               description="**Fill The Form**",
                               color=cfg.CLR)
-        embed.set_image(url="https://media.discordapp.net/attachments/992660600746422312/1026378406264307732/form.gif")
+        embed.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150359107677728819/form.png?width=1025&height=202")
         view = OrderingModalViewBut()
         await ctx.send(embed=embed, view=view)
 
