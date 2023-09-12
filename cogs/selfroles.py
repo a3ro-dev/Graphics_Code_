@@ -177,15 +177,15 @@ class selfroles(commands.Cog):
     async def selfroles(self, interaction: discord.Interaction):
         await interaction.response.send_message("Self-Roles sent!", ephemeral=True)
         embed1 = Embed(color=cfg.CLR)
-        embed1.title = "## __PING ROLES__"
+        embed1.title = "__PING ROLES__"
         embed1.description = ping_roles_description
 
         embed3 = Embed(color=cfg.CLR)
-        embed3.title = "## __GENDER ROLES__"
+        embed3.title = "__GENDER ROLES__"
         embed3.description = gender_roles_description
 
         embed4 = Embed(color=cfg.CLR)
-        embed4.title = "## __AGE ROLES__"
+        embed4.title = "__AGE ROLES__"
         embed4.description = age_roles_description
 
         await interaction.channel.send(embed=embed1, view=PING_BUTTONS())
