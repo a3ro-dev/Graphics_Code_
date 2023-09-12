@@ -38,7 +38,7 @@ class TICKET(discord.ui.View):
         # await ticket.send(f'{interaction.user.mention} Help will be with you shortly.')
         embed = discord.Embed(title=f'{interaction.user.name}',
                               description=f'This ticket is opened by {interaction.user.mention}.',
-                              color=discord.Color(0x2C2F33))
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         embed.set_footer(text=f'{interaction.guild.name} | {interaction.guild.id}', icon_url=interaction.guild.icon.url)
         view = CLOSE()
@@ -60,7 +60,7 @@ class Ticket(commands.Cog):
     @commands.has_permissions(administrator=True)
     async def TICK(self, ctx):
         embed = discord.Embed(title='TICKET', description=f'PRESS THE BUTTON TO OPEN A TICKET',
-                              color=discord.Color(0x2C2F33))
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         embed.set_footer(text=f'{ctx.guild.name} | {ctx.guild.id}', icon_url=ctx.guild.icon.url)
         view = TICKET()
