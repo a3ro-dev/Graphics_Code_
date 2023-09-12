@@ -286,14 +286,14 @@ desc1 = """
 
                **Moderation System**
 
-<:reddrop:1064512185721704458>  __BASIC INFORMATION__
+<a:fancyarr:1064443589825933343>   __BASIC INFORMATION__
 > Moderation Team will impose strikes according to the below mentioned __Strike Policy__ taking into account your history & graveness of your violation of the rules. All actions are taken after thorough investigation & collection of evidence.
-<:reddrop:1064512185721704458>  __STRIKE POLICY__
+<a:fancyarr:1064443589825933343>   __STRIKE POLICY__
 > First Strike: Warning
 > Second Strike: Mute (24 Hours)
 > Third Strike: Ban (3 Days)
 > Fourth Strike: Permanent Ban
-<:reddrop:1064512185721704458>  __NOTE__
+<a:fancyarr:1064443589825933343>   __NOTE__
 > Number of strikes given depends on the situation. We can give four strikes together also so be aware & follow all the rules.
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧"""
@@ -301,18 +301,18 @@ desc1 = """
 desc2 = """
                ## General Instructions
 
-<:reddrop:1064512185721704458>  __NO DEFAMATORY LANGUAGE__
+<a:fancyarr:1064443589825933343>   __NO DEFAMATORY LANGUAGE__
 > Using defamatory words or cussing anyone in any situation with the intention to harm anyone mentally is strictly prohibited. Using such language casually & to improvise humour is allowed upto a certain mark.
-<:reddrop:1064512185721704458>  __NO NSFW CONTENT__
+<a:fancyarr:1064443589825933343>   __NO NSFW CONTENT__
 > Sharing sexually implicit content or non-consensual intimate images/links is not allowed.
-<:reddrop:1064512185721704458>  __NO SPAMMING/EARRAPING__
+<a:fancyarr:1064443589825933343>   __NO SPAMMING/EARRAPING__
 > Spamming of every kind whether it is text-based or voice chat based including earraping, playing discomposed music & purposeful intrusion in discussions of others during day-to-day activity or events is strictly prohibited.
-<:reddrop:1064512185721704458>  __TREAT EVERYONE EQUALLY __
+<a:fancyarr:1064443589825933343>   __TREAT EVERYONE EQUALLY __
 > Treat everyone equally with respect & appreciate sentiments of everyone irrespective of caste, creed, gender, religion & other beliefs.
-<:reddrop:1064512185721704458>  __NO UNETHICAL ADVERTISING__
+<a:fancyarr:1064443589825933343>   __NO UNETHICAL ADVERTISING__
 > Promoting unlawful/violent content or product is not allowed.
 > DM Promotion through individuals or bots targeting people of our server is not allowed.
-<:reddrop:1064512185721704458>  __NO ILLEGAL ACTIVITIES__
+<a:fancyarr:1064443589825933343>   __NO ILLEGAL ACTIVITIES__
 > Practicing disobedient behaviour or sharing private information about others without their consent & posting malicious links to fraud/scam websites, supporting hacking or DDOS attacks is strictly prohibited.
 > Trading illegal things of any sort for personal interest is also prohibited.
 
@@ -321,15 +321,15 @@ desc2 = """
 desc3 = """
                ## Ticket Instructions
 
-<:reddrop:1064512185721704458>  __ORDER DISCUSSIONS__
+<a:fancyarr:1064443589825933343>   __ORDER DISCUSSIONS__
 > No discussions related to the order to be done in DMs or in any other channel. All order related talks need to be done in the ticket itself including placement of orders, asking for updates, payment process & claiming the design as everything needs to be logged for further use.
-<:reddrop:1064512185721704458>  __CODE OF CONDUCT__
+<a:fancyarr:1064443589825933343>   __CODE OF CONDUCT__
 > Fill out the forms correctly while placing the orders.
 > Be a little elaborate to everything you mention for giving the designer a better idea to take care of your needs.
 > Insulting or disrespecting any staff/designer for your personal interest or with the intention to defame anyone is not allowed. 
-<:reddrop:1064512185721704458>  __TICKET CREATION__
+<a:fancyarr:1064443589825933343>   __TICKET CREATION__
 > Create tickets only if you meet the order requirements & are willing to buy something. Don't open tickets with the intention of wasting time & efforts of others.
-<:reddrop:1064512185721704458>  __DESIGN PRICES __
+<a:fancyarr:1064443589825933343>   __DESIGN PRICES __
 > Negotiation in prices is not allowed. Minimum price of every design is fixed & everyone need to follow up that unless any event/offer is in progress. 
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧"""
@@ -337,11 +337,11 @@ desc3 = """
 desc4 = """
                ## Things to be Noted
 
-<:reddrop:1064512185721704458>  __ALTS/MULTIPLE ACCOUNTS__
+<a:fancyarr:1064443589825933343>   __ALTS/MULTIPLE ACCOUNTS__
 > Using multiple accounts for trolling/disturbing others, evading bans, mutes & other restrictions or to increase chances of winning any sort of giveaway/event is strictly prohibited.
-<:reddrop:1064512185721704458>  __MESSAGING STAFFS__
+<a:fancyarr:1064443589825933343>   __MESSAGING STAFFS__
 > Messaging staff or management on personal window for any sort of query related to this server is prohibited. Instead use ModMail to connect with higher authorities of the server.
-<:reddrop:1064512185721704458>  __LOOPHOLES__
+<a:fancyarr:1064443589825933343>   __LOOPHOLES__
 > In case you find something unusual happening or any sort of error in any part of the server including the Official Bot, make sure to report it to the moderators or higher authorities promptly. Exploiting loopholes or encouraging such kind of action is strictly prohibited.
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧"""

@@ -493,19 +493,19 @@ class Orders(commands.Cog):
 
                   <:red_dot:1150768677294194730>**Graphic Designs**<:red_dot:1150768677294194730>
 
-<:red_dot:1150768677294194730> **__PROFILE PICTURE__ [2$ - 10$]**
-<:red_dot:1150768677294194730> **__CONCEPT LOGO__ [8$]**
-<:red_dot:1150768677294194730> **__LOGO DESIGN__ [4$ - 10$]**
-<:red_dot:1150768677294194730> **__BANNER__ [3$]**
-<:red_dot:1150768677294194730> **__HEADER__ [5$]**
-<:red_dot:1150768677294194730> **__POSTER__ [4$]**
-<:red_dot:1150768677294194730> **__ROSTER__ [6$]**
-<:red_dot:1150768677294194730> **__PRE-MADE MASCOT__ [3$]**
-<:red_dot:1150768677294194730> **__CUSTOM MASCOT__ [6$]**
-<:red_dot:1150768677294194730> **__VECTOR__ [12$]**
-<:red_dot:1150768677294194730> **__THUMBNAIL__ [5$]**
-<:red_dot:1150768677294194730> **__STATIC OVERLAY__ [3$]** 
-<:red_dot:1150768677294194730> **__REVAMP__ [20$]**
+<a:fancyarr:1064443589825933343> **__PROFILE PICTURE__ [2$ - 10$]**
+<a:fancyarr:1064443589825933343> **__CONCEPT LOGO__ [8$]**
+<a:fancyarr:1064443589825933343> **__LOGO DESIGN__ [4$ - 10$]**
+<a:fancyarr:1064443589825933343> **__BANNER__ [3$]**
+<a:fancyarr:1064443589825933343> **__HEADER__ [5$]**
+<a:fancyarr:1064443589825933343> **__POSTER__ [4$]**
+<a:fancyarr:1064443589825933343> **__ROSTER__ [6$]**
+<a:fancyarr:1064443589825933343> **__PRE-MADE MASCOT__ [3$]**
+<a:fancyarr:1064443589825933343> **__CUSTOM MASCOT__ [6$]**
+<a:fancyarr:1064443589825933343> **__VECTOR__ [12$]**
+<a:fancyarr:1064443589825933343> **__THUMBNAIL__ [5$]**
+<a:fancyarr:1064443589825933343> **__STATIC OVERLAY__ [3$]** 
+<a:fancyarr:1064443589825933343> **__REVAMP__ [20$]**
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
@@ -522,22 +522,22 @@ class Orders(commands.Cog):
 
        <:red_dot:1150768677294194730>**Payment Methods Accepted**<:red_dot:1150768677294194730>
 
-<:red_dot:1150768677294194730> **__PAYTM__ <:paytm:1064445815688544258>**
-<:red_dot:1150768677294194730> **__GOOGLE PAY__ <:gpay:1064445864598323200>**
-<:red_dot:1150768677294194730> **__FAMPAY__ <:fampay:1064445925189222521>**
-<:red_dot:1150768677294194730> **__UNIFIED PAYMENTS INTERFACE__ <:upi:1064446375997227009>**
-<:red_dot:1150768677294194730> **__PAYPAL__ <:paypal:1064445964519223316>**
-<:red_dot:1150768677294194730> **__NITRO__ <a:nitro:1064446026200649789>**
-<:red_dot:1150768677294194730> **__NITRO CLASSIC__ <a:nitroclassic:853221718158999562>**
-<:red_dot:1150768677294194730> **__GIFTCARD__ <:giftcard:1064446574501056583>**
+<a:fancyarr:1064443589825933343> **__PAYTM__ <:paytm:1064445815688544258>**
+<a:fancyarr:1064443589825933343> **__GOOGLE PAY__ <:gpay:1064445864598323200>**
+<a:fancyarr:1064443589825933343> **__FAMPAY__ <:fampay:1064445925189222521>**
+<a:fancyarr:1064443589825933343> **__UNIFIED PAYMENTS INTERFACE__ <:upi:1064446375997227009>**
+<a:fancyarr:1064443589825933343> **__PAYPAL__ <:paypal:1064445964519223316>**
+<a:fancyarr:1064443589825933343> **__NITRO__ <a:nitro:1064446026200649789>**
+<a:fancyarr:1064443589825933343> **__NITRO CLASSIC__ <a:nitroclassic:853221718158999562>**
+<a:fancyarr:1064443589825933343> **__GIFTCARD__ <:giftcard:1064446574501056583>**
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
 
                 <:red_dot:1150768677294194730>**Things to be Noted**<:red_dot:1150768677294194730>
 
-<:red_dot:1150768677294194730> **__NOTE - 1__**
+<a:fancyarr:1064443589825933343>  **__NOTE - 1__**
 > Use slash command /payment to get the list of payment methods being accepted at the moment.
-<:red_dot:1150768677294194730> **__NOTE - 2__**
+<a:fancyarr:1064443589825933343>  **__NOTE - 2__**
 > Pricing of design depends on the complexity of the order, time being invested to provide the best design, assets/resources needed to fulfill the needs of the client & other basic things. Therefore, the pricing mentioned above in the list is just an estimate/approximate value. The list doesn't not conclude the final pricing.
 
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧""")
