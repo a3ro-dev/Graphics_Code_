@@ -177,7 +177,7 @@ class selfroles(commands.Cog):
     async def selfroles(self, interaction: discord.Interaction):
         await interaction.response.send_message("Self-Roles sent!", ephemeral=True)
         embed1 = Embed(color=cfg.CLR)
-        embed1.title = "<a:_:941690462081810442><a:_:957552706103418920>**__PING ROLES__**<a:_:941690462081810442><a:_:957552706103418920> ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ"
+        embed1.title = "## __PING ROLES__"
         embed1.description = ping_roles_description
 
         embed3 = Embed(color=cfg.CLR)
