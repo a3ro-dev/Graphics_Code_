@@ -2,8 +2,6 @@ import os
 import discord
 from discord.ext import commands
 import config as cfg
-from cogs.points import LBV
-import aiosqlite
 
 class Bot(commands.Bot):
     def __init__(self):
@@ -13,13 +11,6 @@ class Bot(commands.Bot):
 
         super().__init__(case_insensitive=True, command_prefix=commands.when_mentioned_or(cfg.PREFIX), intents=intents,
                          owner_ids=[905658967005495356])  # help_command=None,
-        
-    async def connect_database(self):
-        self.db = await aiosqlite.connect('/home/ubuntu/graphics-code-bott/db/points.db')
-    async def setup_hook(self) -> None:
-        
-        self.add_view(LBV(self.db))
-
 
 bot = Bot()
 
