@@ -40,7 +40,7 @@ class Tickett(discord.ui.Select):
                 mod = interaction.guild.get_role(cfg.SUPPORT) #type: ignore
                 categ = discord.utils.get(interaction.guild.categories, id=cfg.DESIGNER_APP) #type: ignore
                 await interaction.response.send_message("Creating a ticket for you, this may take a while!", ephemeral=True)
-                ticket_channel = await categ.create_text_channel(name=f"order-{interaction.user.name}") #type: ignore
+                ticket_channel = await categ.create_text_channel(name=f"designer-app-{interaction.user.name}") #type: ignore
 
                 await ticket_channel.set_permissions(interaction.user, view_channel=True, send_messages=True) #type: ignore
                 await ticket_channel.set_permissions(mod, read_messages=True, send_messages=True) #type: ignore
@@ -55,7 +55,7 @@ class Tickett(discord.ui.Select):
                 admin = interaction.guild.get_role(cfg.SUPPORT) #type: ignore
                 categ = discord.utils.get(interaction.guild.categories, id=cfg.STAFF_APP) #type: ignore
                 await interaction.response.send_message("Creating a ticket for you, this may take a while!", ephemeral=True) 
-                ticket_channel = await categ.create_text_channel(name=f"issue-{interaction.user.name}") #type: ignore
+                ticket_channel = await categ.create_text_channel(name=f"staff-app-{interaction.user.name}") #type: ignore
 
                 await ticket_channel.set_permissions(interaction.user, view_channel=True, send_messages=True) #type: ignore
                 await ticket_channel.set_permissions(admin, read_messages=True, send_messages=True) #type: ignore
