@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 import config as cfg
 
+
 class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
@@ -44,7 +45,7 @@ async def on_ready():
             except Exception as e:
                 print(f' | ❌ | Failed to load {file[:-3]} because: {str(e)}')
 
-    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name='graphiccodes.xyz',
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.streaming, name='Graphics Code 2.0',
                                                         url='https://www.twitch.tv/search?term=graphicscode'))
 
 
