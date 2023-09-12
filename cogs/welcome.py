@@ -73,9 +73,9 @@ class WELCOME(commands.Cog):
 <a:fancyarr:1064443589825933343> __Get your creative solutions__
 <:red_dot:1150768677294194730>**| Order Placement:** <#992660626272964629>
 <a:fancyarr:1064443589825933343> __Join us as a Designer__
-<:red_dot:1150768677294194730>**| Apply as Designer:** <#992660663858122752>
+<:red_dot:1150768677294194730>**| Apply as Designer:** <#992660662415269919>
 <a:fancyarr:1064443589825933343> __Join us as a Staff Member__
-<:red_dot:1150768677294194730>**| Apply as Staff:** <#992660663858122752>
+<:red_dot:1150768677294194730>**| Apply as Staff:** <#992660662415269919>
 <a:fancyarr:1064443589825933343> __Show some love & support back__
 <:red_dot:1150768677294194730>**| Support Us:** <#992660615833325629>
 ⪦━━━━━━━━━━━━━━━━━━━━━━━⪧
