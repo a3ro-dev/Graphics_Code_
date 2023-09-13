@@ -4,7 +4,7 @@ from discord.ext import commands, tasks
 
 import config as cfg
 
-msg_id = ['1028335811139219546']
+msg_id = []
 
 
 class LBV(discord.ui.View):
