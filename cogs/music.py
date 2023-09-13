@@ -45,9 +45,9 @@ class Music(commands.Cog):
         await self.bot.wait_until_ready()
 
         await wavelink.NodePool.create_node(bot=self.bot,
-                                            host='lavalink.oops.wtf',
-                                            port=2000,
-                                            password="www.freelavalink.ga",
+                                            host='bots.pylexservers.xyz',
+                                            port=26237,
+                                            password="darinyrama",
                                             spotify_client=spotify.SpotifyClient(client_id="b6b89aa6f8f5446c80c83c25b06d081f",
                                                                                  client_secret="238c31fce5144a6685bda0e4181c1574"))
 
