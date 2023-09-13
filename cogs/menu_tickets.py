@@ -15,7 +15,7 @@ class Tickets(commands.Cog):
         self.bot.add_view(TicketView())
         self.bot.add_view(Close())
 
-    @commands.hybrid_command(aliases=['tick', 'ticket', 'support'])
+    @commands.hybrid_command(aliases=['m_tick', 'o_ticket', 'support'])
     @commands.has_permissions(administrator=True)
     async def open_ticket(self, ctx: commands.Context):
         try:

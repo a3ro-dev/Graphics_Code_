@@ -47,7 +47,7 @@ class Modals(commands.Cog):
         embed = discord.Embed(title="Order form",
                               description="**Fill The Form**",
                               color=cfg.CLR)
-        embed.set_image(url="https://media.discordapp.net/attachments/992660600746422312/1026378406264307732/form.gif")
+        embed.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150359107677728819/form.png?width=1025&height=202")
         view = OrderingModalViewBut()
         await ctx.send(embed=embed, view=view)
 
@@ -111,7 +111,7 @@ class OrderingModalViewBut(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(emoji='<:graphicscode:985936754446073958>', style=discord.ButtonStyle.gray, custom_id='applybut')
+    @discord.ui.button(emoji='<:gc:1150762439789527100>', style=discord.ButtonStyle.gray, custom_id='applybut')
     async def callmodalcallback(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_modal(OrderingCallModalView())
 
