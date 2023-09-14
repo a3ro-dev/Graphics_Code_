@@ -36,15 +36,15 @@ class CustomCmds(commands.Cog):
         embed = discord.Embed(color=rcfg.CLR, timestamp=discord.utils.utcnow())
         embed.set_footer(text="Last updated on")
         embed.title = "GRAPHICS CODE 2.0 ROSTER"
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDER:__ ', value=f'{foun}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__FOUNDER:__ ', value=f'{foun}' or 'None',
                         inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
                         inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__COO:__ ', value=f'{coo}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__COO:__ ', value=f'{coo}' or 'None',
                         inline=False)
-        # embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
+        # embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
                         # inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__DESIGNERS:__ ', value=f'{dnrs}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__DESIGNERS:__ ', value=f'{dnrs}' or 'None',
                         inline=False)
 
         embed.set_image(
@@ -78,15 +78,15 @@ class CustomCmds(commands.Cog):
         embed = discord.Embed(color=rcfg.CLR, timestamp=discord.utils.utcnow())
         embed.set_footer(text="Last updated on")
         embed.title = "GRAPHICS CODE 2.0 ROSTER"
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDER:__ ', value=f'{foun}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__FOUNDER:__ ', value=f'{foun}' or 'None',
                         inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
                         inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__COO:__ ', value=f'{coo}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__COO:__ ', value=f'{coo}' or 'None',
                         inline=False)
-        # embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
+        # embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
                         # inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__DESIGNERS:__ ', value=f'{dnrs}' or 'None',
+        embed.add_field(name=f'<:gc:1150762439789527100> 𒁍〢__DESIGNERS:__ ', value=f'{dnrs}' or 'None',
                         inline=False)
         embed.set_image(
             url="https://media.discordapp.net/attachments/1150321238997205002/1150366321117245460/roster.png?width=1025&height=202")
