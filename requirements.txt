@@ -11,3 +11,4 @@ wavelink
 aiosqlite
 selenium
 APScheduler
+chat-exporter
