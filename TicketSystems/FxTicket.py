@@ -391,6 +391,7 @@ class Orders(commands.Cog):
 
         # Export the chat transcript
         transcript = await chat_exporter.export(ctx.channel, **export_options)
+        await ctx.send(transcript)
 
         if transcript is None:
             await ctx.send("Failed to generate transcript.")
