@@ -117,6 +117,7 @@ class TTTB(commands.Cog):
     
     @commands.command(name="tttb")
     async def tictactoebuttons_command(self, ctx):
+        "TicTacToe Game"
         view = TicTacToe()
         await ctx.send(view=view)
 
