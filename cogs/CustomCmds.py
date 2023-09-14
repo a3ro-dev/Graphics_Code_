@@ -22,24 +22,28 @@ class CustomCmds(commands.Cog):
     async def auto_roster(self):
         guild = self.bot.get_guild(int(905665593267609631))
         FOUNDER = guild.get_role(992648660166910073)
-        OWNER = guild.get_role(91150133179110404127)
-        BOT_DEV = guild.get_role(992651330466361414)
+        OWNER = guild.get_role(1150370655318048818)
+        COO = guild.get_role(1150133179110404127)
+        # BOT_DEV = guild.get_role(992651330466361414)
         DESIGNERS = guild.get_role(992651587577196686)
 
         foun = ", \n".join([member.name for member in FOUNDER.members])
         owne = ", \n".join([member.name for member in OWNER.members])
-        botdev = ", \n".join([member.name for member in BOT_DEV.members])
+        coo = ", \n".join([member.name for member in COO.members])
+        # botdev = ", \n".join([member.name for member in BOT_DEV.members])
         dnrs = ", \n".join([member.name for member in DESIGNERS.members])
 
         embed = discord.Embed(color=rcfg.CLR, timestamp=discord.utils.utcnow())
         embed.set_footer(text="Last updated on")
         embed.title = "GRAPHICS CODE 2.0 ROSTER"
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{foun}' or 'None',
+        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDER:__ ', value=f'{foun}' or 'None',
                         inline=False)
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
                         inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
+        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__COO:__ ', value=f'{coo}' or 'None',
                         inline=False)
+        # embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
+                        # inline=False)
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__DESIGNERS:__ ', value=f'{dnrs}' or 'None',
                         inline=False)
 
@@ -60,23 +64,28 @@ class CustomCmds(commands.Cog):
     async def send_roster(self, ctx):
         guild = self.bot.get_guild(int(905665593267609631))
         FOUNDER = guild.get_role(992648660166910073)
-        OWNER = guild.get_role(91150133179110404127)
-        BOT_DEV = guild.get_role(992651330466361414)
+        OWNER = guild.get_role(1150370655318048818)
+        COO = guild.get_role(1150133179110404127)
+        # BOT_DEV = guild.get_role(992651330466361414)
         DESIGNERS = guild.get_role(992651587577196686)
 
-        foun = ", \n".join([member.mention for member in FOUNDER.members])
-        owne = ", \n".join([member.mention for member in OWNER.members])
-        botdev = ", \n".join([member.mention for member in BOT_DEV.members])
-        dnrs = ", \n".join([member.mention for member in DESIGNERS.members])
+        foun = ", \n".join([member.name for member in FOUNDER.members])
+        owne = ", \n".join([member.name for member in OWNER.members])
+        coo = ", \n".join([member.name for member in COO.members])
+        # botdev = ", \n".join([member.name for member in BOT_DEV.members])
+        dnrs = ", \n".join([member.name for member in DESIGNERS.members])
 
-        embed = discord.Embed(color=rcfg.CLR)
+        embed = discord.Embed(color=rcfg.CLR, timestamp=discord.utils.utcnow())
+        embed.set_footer(text="Last updated on")
         embed.title = "GRAPHICS CODE 2.0 ROSTER"
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDERS:__ ', value=f'{foun}' or 'None',
+        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__FOUNDER:__ ', value=f'{foun}' or 'None',
                         inline=False)
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__CEO:__ ', value=f'{owne}' or 'None',
                         inline=False)
-        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
+        embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__COO:__ ', value=f'{coo}' or 'None',
                         inline=False)
+        # embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__BOT DEVS:__ ', value=f'{botdev}' or 'None',
+                        # inline=False)
         embed.add_field(name=f'<:graphicscode:985936754446073958> 𒁍〢__DESIGNERS:__ ', value=f'{dnrs}' or 'None',
                         inline=False)
         embed.set_image(

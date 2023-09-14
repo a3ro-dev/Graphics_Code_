@@ -29,7 +29,7 @@ class BUTTON1(discord.ui.View):
 
         embed = discord.Embed(title='ORDER CLAIMED',
                               description=f'{client.mention} your order was accepted by our artist - {interaction.user.mention}.',
-                              color=discord.Color(0x2C2F33))
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         embed.set_author(name=interaction.user.name, icon_url=interaction.user.avatar.url)
 
@@ -47,7 +47,7 @@ class BUTTON1(discord.ui.View):
             json.dump(data, f, indent=4)
 
         embed.set_thumbnail(url=interaction.guild.icon.url)
-        embed.color = discord.Color(0x00FF00)
+        embed.color = cfg.CLR
         embed.add_field(name='Link', value=f'[You can view the message here]({msg.jump_url})')
         try:
             await client.send(embed=embed)

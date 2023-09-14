@@ -4,8 +4,7 @@ from discord.ext import commands, tasks
 
 import config as cfg
 
-msg_id = []
-
+msg_id = ['1151871558504153230']
 
 class LBV(discord.ui.View):
     def __init__(self, db):
@@ -23,20 +22,23 @@ class LBV(discord.ui.View):
         res = await cursor.fetchall()
         await cursor.execute("SELECT points FROM points ORDER BY points DESC")
         points = await cursor.fetchall()
-        top = points[0]
-        sec = points[1]
-        third = points[2]
-        fourth = points[3]
-        fifth = points[4]
-        top_res = res[0]
-        sec_res = res[1]
-        third_res = res[2]
-        fourth_res = res[3]
-        fifth_res = res[4]
-        embed = discord.Embed(title="Points",
-                              description=f"1) <@{top_res[0]}> - {top[0]}\n2) <@{sec_res[0]}> - {sec[0]}\n3) <@{third_res[0]}> - {third[0]}\n4) <@{fourth_res[0]}> - {fourth[0]}\n5) <@{fifth_res[0]}> - {fifth[0]}")
-        await interaction.response.send_message(embed=embed, ephemeral=True)
 
+        if len(points) >= 5 and len(res) >= 5:
+            top = points[0]
+            sec = points[1]
+            third = points[2]
+            fourth = points[3]
+            fifth = points[4]
+            top_res = res[0]
+            sec_res = res[1]
+            third_res = res[2]
+            fourth_res = res[3]
+            fifth_res = res[4]
+            embed = discord.Embed(title="Points",
+                                  description=f"1) <@{top_res[0]}> - {top[0]}\n2) <@{sec_res[0]}> - {sec[0]}\n3) <@{third_res[0]}> - {third[0]}\n4) <@{fourth_res[0]}> - {fourth[0]}\n5) <@{fifth_res[0]}> - {fifth[0]}")
+            await interaction.response.send_message(embed=embed, ephemeral=True)
+        else:
+            await interaction.response.send_message("Not enough data for the leaderboard.", ephemeral=True)
 
 class PointsCog(commands.Cog):
     """COG which handles with the point system of artists"""
@@ -145,31 +147,39 @@ class PointsCog(commands.Cog):
             await cursor.execute("UPDATE points SET points = ? WHERE user_id = ?", (points_final, member.id))
             await self.db.commit()
 
-        embed = discord.Embed(description=f"```Points added```\n**{points} points were removed from {member.mention}**",
+        embed = discord.Embed(description=f"```Points removed```\n**{points} points were removed from {member.mention}**",
                               color=cfg.CLR)
         await ctx.send(embed=embed)
 
-    @tasks.loop(hours=8.0)
+    @tasks.loop(hours=2.0)
     async def update_leaderboard(self):
         cursor = await self.db.cursor()
-        message_id = msg_id[0]
+        message_id = msg_id[0]  # Make sure msg_id is correctly defined and contains the message ID
+
         await cursor.execute("SELECT user_id FROM points ORDER BY points DESC")
         res = await cursor.fetchall()
-        top = res[0]
-        sec = res[1]
-        third = res[2]
-        fourth = res[3]
-        fifth = res[4]
-        embed = discord.Embed(title="Leaderboard",
-                              description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
-                              color=cfg.CLR)
-        embed.set_image(
-            url="https://media.discordapp.net/attachments/1150321238997205002/1150321298560536586/leaderboardgif.gif")
-        await cursor.execute("SELECT points FROM points ORDER BY points DESC")
-        points = await cursor.fetchall()
-        msg = await self.ctx.fetch_message(message_id)
-        await msg.edit(embed=embed, view=LBV(points, res))
 
+        if len(res) >= 5:
+            top = res[0]
+            sec = res[1]
+            third = res[2]
+            fourth = res[3]
+            fifth = res[4]
+
+            embed = discord.Embed(title="Leaderboard",
+                                description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
+                                color=cfg.CLR)
+
+            embed.set_image(
+                url="https://media.discordapp.net/attachments/1150321238997205002/1150321298560536586/leaderboardgif.gif")
+
+            await cursor.execute("SELECT points FROM points ORDER BY points DESC")
+            points = await cursor.fetchall()
+
+            msg = await self.ctx.fetch_message(message_id)
+            await msg.edit(embed=embed, view=LBV(points, res))
+        else:
+            print("Not enough data for the leaderboard.")
 
 async def setup(bot):
     await bot.add_cog(PointsCog(bot))
