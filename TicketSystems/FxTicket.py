@@ -420,9 +420,6 @@ class Orders(commands.Cog):
             await ctx.send("Transcript has been sent to the designated channel.")
         else:
             await ctx.send("Failed to send transcript to the designated channel. Check the channel ID.")
- 
-
-
 
     @commands.command(name='assign')
     @commands.has_permissions(administrator=True)
