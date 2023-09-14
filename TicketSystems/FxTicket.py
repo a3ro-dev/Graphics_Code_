@@ -5,7 +5,6 @@ import discord
 from discord.ext import commands
 import config as cfg
 from db import db
-from cogs.Modals import Modals
 
 # Receipt Format
 
@@ -163,7 +162,6 @@ class Buttons(discord.ui.View):
                               color=discord.Color(0x2F3136))
         embed.timestamp = discord.utils.utcnow()
         message = await channel.send(content=f'{client.mention} | {ticket_supp.mention}', embed=embed)
-        Modals.orderform()
         thread = await message.create_thread(name=f"GFX-{client.name} private discussion", auto_archive_duration=60)
 
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
@@ -194,7 +192,6 @@ class Buttons(discord.ui.View):
         embed.timestamp = discord.utils.utcnow()
         message = await channel.send(content=f'{client.mention} |', embed=embed)
         thread = await message.create_thread(name=f"VFX-{client.name} private discussion", auto_archive_duration=60)
-        Modals.orderform()
 
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
