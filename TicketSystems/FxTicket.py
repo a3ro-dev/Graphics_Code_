@@ -378,40 +378,40 @@ class Orders(commands.Cog):
         await asyncio.sleep(10)
         await ctx.channel.delete()
 
-@commands.command(name='transcript')
-@commands.has_permissions(administrator=True)
-async def transcript(self, ctx: commands.Context):
-    """Generates Transcript of an Order Ticket"""
-    
-    # Set the export options
-    export_options = {
-        'limit': 10000,         # Change this limit as needed
-        'tz_info': 'UTC',       # Change timezone as needed
-        'military_time': True   # Use a 24-hour time format
-    }
+    @commands.command(name='transcript')
+    @commands.has_permissions(administrator=True)
+    async def transcript(self, ctx: commands.Context):
+        """Generates Transcript of an Order Ticket"""
+        
+        # Set the export options
+        export_options = {
+            'limit': 10000,         # Change this limit as needed
+            'tz_info': 'UTC',       # Change timezone as needed
+            'military_time': True   # Use a 24-hour time format
+        }
 
-    # Export the chat transcript
-    transcript = await chat_exporter.export(ctx.channel, **export_options)
-    print(transcript)
+        # Export the chat transcript
+        transcript = await chat_exporter.export(ctx.channel, **export_options)
+        print(transcript)
 
-    if transcript is None:
-        await ctx.send("Failed to generate transcript.")
-        return
+        if transcript is None:
+            await ctx.send("Failed to generate transcript.")
+            return
 
-    # Create a Markdown formatted string with only message content
-    markdown_content = ""
+        # Create a Markdown formatted string with only message content
+        markdown_content = ""
 
-    for message in transcript:
-        content = message['content']
+        for message in transcript:
+            content = message['content']
 
-        markdown_content += f"{content}\n"
+            markdown_content += f"{content}\n"
 
-    # Create a filename for the transcript
-    filename = f"transcript-{ctx.channel.name}.md"
+        # Create a filename for the transcript
+        filename = f"transcript-{ctx.channel.name}.md"
 
-    # Send the transcript as a Markdown file
-    await ctx.send(file=discord.File(io.BytesIO(markdown_content.encode()), filename=filename))
-    await ctx.send("Transcript has been sent.")
+        # Send the transcript as a Markdown file
+        await ctx.send(file=discord.File(io.BytesIO(markdown_content.encode()), filename=filename))
+        await ctx.send("Transcript has been sent.")
 
 
     @commands.command(name='assign')
