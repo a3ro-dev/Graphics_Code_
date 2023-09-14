@@ -60,44 +60,60 @@ class PointsCog(commands.Cog):
         cursor = await self.db.cursor()
         await cursor.execute("SELECT * FROM points WHERE user_id = ?", (member.id,))
         res = await cursor.fetchone()
-        if res == None:
+        
+        if res is None:
             await cursor.execute("INSERT INTO points(user_id, points) VALUES(?,?)", (member.id, 0))
             await self.db.commit()
-            print(res)
+            res = (member.id, 0)  # Set a default value for res
+        
         e = discord.Embed(title="Points",
-                          description=f"**Displaying FX points of {member.mention}**\n\nPoints:- `{res[1]}`",
-                          color=cfg.CLR)
+                        description=f"**Displaying FX points of {member.mention}**\n\nPoints:- `{res[1]}`",
+                        color=cfg.CLR)
         await ctx.send(embed=e)
+
 
     @commands.command(name="leaderboard", aliases=["lb", "pointslb", "plb"])
     async def leaderboard_command(self, ctx):
-
         artists = ctx.guild.get_role(cfg.ARTISTS)
+        
         if artists not in ctx.author.roles:
             return
+        
         cursor = await self.db.cursor()
+        
         await cursor.execute("SELECT user_id FROM points ORDER BY points DESC")
         res = await cursor.fetchall()
-        top = res[0]
-        sec = res[1]
-        third = res[2]
-        fourth = res[3]
-        fifth = res[4]
+        
+        # Check if there are at least 5 results before accessing elements
+        if len(res) >= 5:
+            top = res[0]
+            sec = res[1]
+            third = res[2]
+            fourth = res[3]
+            fifth = res[4]
+        else:
+            # Handle the case where there are not enough results
+            top = sec = third = fourth = fifth = None
+        
         embed = discord.Embed(title="Leaderboard",
-                              description=f"Expected designer of the month:- <@{top[0]}>\n\n```Top 5```\n\n1)<@{top[0]}>\n2)<@{sec[0]}>\n3)<@{third[0]}>\n4)<@{fourth[0]}>\n5)<@{fifth[0]}>",
-                              color=cfg.CLR)
-        embed.set_image(
-            url="https://media.discordapp.net/attachments/1150321238997205002/1150321298560536586/leaderboardgif.gif")
+                            description=f"Expected designer of the month:- <@{top[0] if top else 'N/A'}>\n\n```Top 5```\n\n1)<@{top[0] if top else 'N/A'}>\n2)<@{sec[0] if sec else 'N/A'}>\n3)<@{third[0] if third else 'N/A'}>\n4)<@{fourth[0] if fourth else 'N/A'}>\n5)<@{fifth[0] if fifth else 'N/A'}>",
+                            color=cfg.CLR)
+        
+        embed.set_image(url="https://media.discordapp.net/attachments/1150321238997205002/1150321298560536586/leaderboardgif.gif")
         embed.set_footer(text=ctx.guild.name, icon_url=ctx.guild.icon.url)
+        
         await cursor.execute("SELECT points FROM points ORDER BY points DESC")
         points = await cursor.fetchall()
+        
         msg = await ctx.send(embed=embed, view=LBV(self.db))
+        
         if ctx.channel.id == 1150284418947219586:
             try:
                 msg_id.clear()
             except:
                 pass
             msg_id.append(msg.id)
+
 
     @commands.command(name="addp")
     @commands.has_permissions(administrator=True)
