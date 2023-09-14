@@ -370,9 +370,38 @@ class Orders(commands.Cog):
 
         db.exec('DELETE FROM orders WHERE CHANNEL=?', ctx.channel.id)
         db.commit()
+        self.transcript()
         await ctx.send('Deleting channel in 10 seconds.')
         await asyncio.sleep(10)
         await ctx.channel.delete()
+
+    @commands.command(name='transcript')
+    async def transcript(ctx, ticket_channel: discord.TextChannel):
+        "```Generates Transcript of an Order Ticket```"
+        # Check if the user has the necessary permissions to read messages in the specified ticket channel
+        if not ticket_channel.permissions_for(ctx.author).read_messages:
+            await ctx.send("You don't have permission to read messages in that ticket channel.")
+            return
+
+        # Fetch messages from the ticket channel
+        messages = await ticket_channel.history(limit=None).flatten()
+
+        # Create a Markdown transcript content with message details
+        transcript_content = ""
+        for message in messages:
+            timestamp = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            author_name = message.author.display_name
+            content = message.content
+            transcript_content += f"**[{timestamp}] [{author_name}]**: {content}\n"
+
+        # Send the transcript content to a specific channel
+        transcript_channel = ctx.guild.get_channel(cfg.TRANSCRIPTS)  # Replace with your channel ID
+        if transcript_channel is None:
+            await ctx.send("Transcript channel not found.")
+            return
+
+        await transcript_channel.send(f"Transcript for {ticket_channel.mention}:\n\n{transcript_content}")
+        await ctx.send("Transcript sent to the designated channel.")
 
     @commands.command(name='assign')
     @commands.has_permissions(administrator=True)
