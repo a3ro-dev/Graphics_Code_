@@ -89,7 +89,7 @@ class OrderingCallModalView(discord.ui.Modal, title='Fill me'):
         style=discord.TextStyle.short,
         placeholder='Minimum 3 days should be given',
         required=False,
-        max_length=500
+        max_length=200
     )
 
     async def on_submit(self, interaction: discord.Interaction):
@@ -105,6 +105,7 @@ class OrderingCallModalView(discord.ui.Modal, title='Fill me'):
         embed.set_author(name=interaction.user, icon_url=interaction.user.avatar)
         embed.set_footer(text=interaction.guild.name, icon_url=interaction.guild.icon)
         await interaction.followup.send(embed=embed)
+        await embed.pin()
 
 
 class OrderingModalViewBut(discord.ui.View):

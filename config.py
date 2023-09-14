@@ -1,4 +1,5 @@
-TOKEN = "OTUxODc3MzMxNDU3MjgyMTA4.Ge_vro.Ig9xjrZxDHducojgWUwdjNFvcaYaWQR6q4XWKM"
+import discordtoken as t
+TOKEN = t.VALUE
 
 PREFIX = '%'
 

@@ -59,8 +59,8 @@ class CustomCmds(commands.Cog):
     @commands.has_permissions(administrator=True, )
     async def send_roster(self, ctx):
         guild = self.bot.get_guild(int(905665593267609631))
-        FOUNDER = guild.get_role(992648475634315355)
-        OWNER = guild.get_role(992648660166910073)
+        FOUNDER = guild.get_role(992648660166910073)
+        OWNER = guild.get_role(91150133179110404127)
         BOT_DEV = guild.get_role(992651330466361414)
         DESIGNERS = guild.get_role(992651587577196686)
 
