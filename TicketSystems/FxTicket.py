@@ -380,7 +380,9 @@ class Orders(commands.Cog):
     async def transcript(ctx, ticket_channel: discord.TextChannel):
         "```Generates Transcript of an Order Ticket```"
         # Fetch messages from the ticket channel
-        messages = await ticket_channel.history(limit=None).flatten()
+        messages = []
+        async for message in ticket_channel.history(limit=None):
+            messages.append(message)
 
         # Create a Markdown transcript content with message details
         transcript_content = ""
