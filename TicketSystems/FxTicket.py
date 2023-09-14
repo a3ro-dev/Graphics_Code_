@@ -378,8 +378,10 @@ class Orders(commands.Cog):
     @commands.command(name='transcript')
     async def transcript(ctx, ticket_channel: discord.TextChannel):
         "```Generates Transcript of an Order Ticket```"
+        member = ctx.guild.get_member(ctx.author.id)
+
         # Check if the user has the necessary permissions to read messages in the specified ticket channel
-        if not ticket_channel.permissions_for(ctx.author).read_messages:
+        if not member.guild_permissions.read_messages:
             await ctx.send("You don't have permission to read messages in that ticket channel.")
             return
 
