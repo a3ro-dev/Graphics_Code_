@@ -469,7 +469,7 @@ class Orders(commands.Cog):
     @commands.command()
     async def procedure(self, ctx):
         """```Displays the procedure to place an order.```"""
-        description = (f'Step 1: Open a ticket from <#{int(cfg.ORDER)}>\n'
+        description = (f'Step 1: Open a ticket from <#992660626272964629>\n'
                        f'In the ticket channel explain your order to the artist in the format given in `%form`.\n'
                        f'Wait for an artist to claim your Order. Once an artist claims your order, you will be notified in your DMs.\n'
                        f'After an artist has claimed your order, he/she will complete your order and notify you.\n'
