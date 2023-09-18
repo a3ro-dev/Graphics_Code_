@@ -160,14 +160,15 @@ class Buttons(discord.ui.View):
         await channel.set_permissions(artists, view_channel=True, send_messages=True, send_messages_in_threads=False)
         # await channel.set_permissions(client_role, view_channel=False)
         await channel.set_permissions(community, view_channel=False)
+        await interaction.response.send_message(f'Your Order has been placed. Please move to {channel.mention}',ephemeral=True)
 
         embed = discord.Embed(title='GFX Ticket',
                               description=f'Ticket Opened by {client.mention}\nCustomer Support will be with you shortly.\nCheck pricing and other information by using `%procedure`, `%price`, `%form`.',
-                              color=discord.Color(0x2F3136))
+                              color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
-        message = await channel.send(content=f'{client.mention} | {ticket_supp.mention}', embed=embed)
+        message = await channel.send(content=f'{client.mention} | {ticket_supp.mention}', embed=embed, view=TRANSCRIPT())
+        message.pin()
         thread = await message.create_thread(name=f"GFX-{client.name} private discussion", auto_archive_duration=60)
-
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
         db.commit()
@@ -189,18 +190,71 @@ class Buttons(discord.ui.View):
         await channel.set_permissions(artists, view_channel=True, send_messages=True, send_messages_in_threads=False)
         # await channel.set_permissions(client_role, view_channel=False)
         await channel.set_permissions(community, view_channel=False)
+        await interaction.response.send_message(f'Your Order has been placed. Please move to {channel.mention}',ephemeral=True)
 
         embed = discord.Embed(title='VFX Ticket',
                               description=f'Ticket Opened by {client.mention}\nHelp will be with you shortly.\nCheck pricing and other information by using `%procedure`, `%price`, `%form`.',
                               color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
-        message = await channel.send(content=f'{client.mention} |', embed=embed)
+        message = await channel.send(content=f'{client.mention} |', embed=embed, view=TRANSCRIPT())
+        message.pin()
         thread = await message.create_thread(name=f"VFX-{client.name} private discussion", auto_archive_duration=60)
-
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
         db.commit()
 
+class TRANSCRIPT(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+
+    @discord.ui.button(label='Transcript', style=discord.ButtonStyle.grey, custom_id='transcript:blue')
+    async def transcript(self, interaction: discord.Interaction, button: discord.ui.Button, transcript_channel = cfg.TRANSCRIPTS):
+        """Generates Transcript of an Order Ticket"""
+        try:
+            messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
+            cont = ''
+            for i in range(len(messages)):
+                if messages[i].author.bot == True:
+                    continue
+                cont = cont + f'{messages[i].author.name} : {messages[i].content}\n'
+
+            buffer = BytesIO(cont.encode('utf-8'))
+            file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.html')
+            channel = interaction.guild.get_channel(transcript_channel)  # Transcript Logs
+            await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file)
+
+            messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
+            cont = ''
+            for i in range(len(messages)):
+                if messages[i].author.bot == True:
+                    continue
+                cont = cont + f'{messages[i].author.name} : {messages[i].content}\n'
+
+            buffer = BytesIO(cont.encode('utf-8'))
+            file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.txt')
+
+            await interaction.response.send_message('Ticket transcripted successfully!')
+        except Exception as e:
+            print(e)
+
+    @discord.ui.button(label='CLOSE', style=discord.ButtonStyle.danger, custom_id='CLOSE:RED')
+    async def closeticket(self, interaction=discord.Interaction, button=discord.ui.Button, ):
+        """```Deletes a Ticket Channel.```"""
+        try:
+            channels = db.column('SELECT CHANNEL FROM orders')
+            if interaction.channel.id in channels:
+                pass
+            else:
+                await interaction.send('This is not a ticket in my records.')
+                return
+            db.exec('DELETE FROM orders WHERE CHANNEL=?', interaction.channel.id)
+            db.commit()
+            self.transcript()
+            await interaction.send('Deleting channel in 10 seconds.')
+            await asyncio.sleep(10)
+            await interaction.channel.delete()
+        except Exception as e:
+            print(e)
 
 class Orders(commands.Cog):
     """This COG handles with the different types of order commands"""
@@ -377,52 +431,6 @@ class Orders(commands.Cog):
         await ctx.send('Deleting channel in 10 seconds.')
         await asyncio.sleep(10)
         await ctx.channel.delete()
-
-    @commands.command(name='transcript')
-    @commands.has_permissions(administrator=True)
-    async def transcript(self, interaction: discord.Interaction, button: discord.ui.Button, transcript_channel = cfg.TRANSCRIPTS):
-        """Generates Transcript of an Order Ticket"""
-
-        try:
-            messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
-            cont = ''
-            for i in range(len(messages)):
-                if messages[i].author.bot == True:
-                    continue
-                cont = cont + f'{messages[i].author.name} : {messages[i].content}\n'
-
-            buffer = BytesIO(cont.encode('utf-8'))
-            file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.html')
-            channel = interaction.guild.get_channel(transcript_channel)  # Transcript Logs
-            await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file)
-
-            messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
-            cont = ''
-            for i in range(len(messages)):
-                if messages[i].author.bot == True:
-                    continue
-                cont = cont + f'{messages[i].author.name} : {messages[i].content}\n'
-
-            buffer = BytesIO(cont.encode('utf-8'))
-            file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.txt')
-
-            await interaction.response.send_message('Ticket transcripted successfully!')
-        except Exception as e:
-            print(e)
-        channels = db.column('SELECT CHANNEL FROM orders')
-        if interaction.channel.id in channels:
-            pass
-        else:
-            await interaction.send('This is not a ticket in my records.')
-            return
-        db.exec('DELETE FROM orders WHERE CHANNEL=?', interaction.channel.id)
-        db.commit()
-        self.transcript()
-        await interaction.send('Deleting channel in 10 seconds.')
-        await asyncio.sleep(10)
-        await interaction.channel.delete()
-        
-
 
     @commands.command(name='assign')
     @commands.has_permissions(administrator=True)
