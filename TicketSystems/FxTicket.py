@@ -232,7 +232,7 @@ class TRANSCRIPT(discord.ui.View):
             buffer = BytesIO(cont.encode('utf-8'))
             file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.txt')
 
-            await interaction.response.send_message('Ticket transcripted successfully!')
+            await interaction.response.send_message('Ticket transcripted successfully!', ephemeral=True)
         except Exception as e:
             print(e)
 
@@ -249,7 +249,7 @@ class TRANSCRIPT(discord.ui.View):
             db.exec('DELETE FROM orders WHERE CHANNEL=?', interaction.channel.id)
             db.commit()
             self.transcript()
-            await interaction.send('Deleting channel in 10 seconds.')
+            await interaction.response.send_message('Deleting channel in 10 seconds.')
             await asyncio.sleep(10)
             await interaction.channel.delete()
         except Exception as e:
