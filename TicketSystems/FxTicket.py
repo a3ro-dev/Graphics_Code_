@@ -244,7 +244,7 @@ class TRANSCRIPT(discord.ui.View):
             if interaction.channel.id in channels:
                 pass
             else:
-                await interaction.send('This is not a ticket in my records.')
+                await interaction.response.send_message('This is not a ticket in my records.')
                 return
             db.exec('DELETE FROM orders WHERE CHANNEL=?', interaction.channel.id)
             db.commit()
