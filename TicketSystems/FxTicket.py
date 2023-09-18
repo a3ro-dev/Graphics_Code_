@@ -160,13 +160,14 @@ class Buttons(discord.ui.View):
         await channel.set_permissions(artists, view_channel=True, send_messages=True, send_messages_in_threads=False)
         # await channel.set_permissions(client_role, view_channel=False)
         await channel.set_permissions(community, view_channel=False)
-        await interaction.response.send_message(f'Your Order has been placed. Please move to {channel.mention}',ephemeral=True)
+        # await interaction.response.send_message(f'Your Order has been placed. Please move to {channel.mention}',ephemeral=True)
 
         embed = discord.Embed(title='GFX Ticket',
                               description=f'Ticket Opened by {client.mention}\nCustomer Support will be with you shortly.\nCheck pricing and other information by using `%procedure`, `%price`, `%form`.',
                               color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
-        message = await channel.send(content=f'{client.mention} | {ticket_supp.mention}', embed=embed)# view=TRANSCRIPT()
+        message = await channel.send(content=f'{client.mention} | {ticket_supp.mention}', embed=embed, view=TRANSCRIPT())
+        message.pin()
         thread = await message.create_thread(name=f"GFX-{client.name} private discussion", auto_archive_duration=60)
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
@@ -189,13 +190,14 @@ class Buttons(discord.ui.View):
         await channel.set_permissions(artists, view_channel=True, send_messages=True, send_messages_in_threads=False)
         # await channel.set_permissions(client_role, view_channel=False)
         await channel.set_permissions(community, view_channel=False)
-        await interaction.response.send_message(f'Your Order has been placed. Please move to {channel.mention}',ephemeral=True)
+        # await interaction.response.send_message(f'Your Order has been placed. Please move to {channel.mention}',ephemeral=True)
 
         embed = discord.Embed(title='VFX Ticket',
                               description=f'Ticket Opened by {client.mention}\nHelp will be with you shortly.\nCheck pricing and other information by using `%procedure`, `%price`, `%form`.',
                               color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
-        message = await channel.send(content=f'{client.mention} |', embed=embed) # view=TRANSCRIPT()
+        message = await channel.send(content=f'{client.mention} |', embed=embed, view=TRANSCRIPT())
+        message.pin()
         thread = await message.create_thread(name=f"VFX-{client.name} private discussion", auto_archive_duration=60)
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
