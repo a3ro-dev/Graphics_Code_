@@ -5,9 +5,10 @@ import discord
 from discord.ext import commands
 import config as cfg
 from db import db
-import io
 from datetime import datetime
-import chat_exporter
+import asyncio
+import discord
+from io import BytesIO
 
 # Receipt Format
 
@@ -370,7 +371,6 @@ class Orders(commands.Cog):
         else:
             await ctx.send('This is not a ticket in my records.')
             return
-
         db.exec('DELETE FROM orders WHERE CHANNEL=?', ctx.channel.id)
         db.commit()
         self.transcript()
@@ -380,38 +380,48 @@ class Orders(commands.Cog):
 
     @commands.command(name='transcript')
     @commands.has_permissions(administrator=True)
-    async def transcript(self, ctx: commands.Context):
+    async def transcript(self, interaction: discord.Interaction, button: discord.ui.Button, transcript_channel = cfg.TRANSCRIPTS):
         """Generates Transcript of an Order Ticket"""
-        
-        # Set the export options
-        export_options = {
-            'limit': 10000,         # Change this limit as needed
-            'tz_info': 'UTC',       # Change timezone as needed
-            'military_time': True   # Use a 24-hour time format
-        }
 
-        # Export the chat transcript
-        transcript = await chat_exporter.export(ctx.channel, **export_options)
-        print(transcript)
+        try:
+            messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
+            cont = ''
+            for i in range(len(messages)):
+                if messages[i].author.bot == True:
+                    continue
+                cont = cont + f'{messages[i].author.name} : {messages[i].content}\n'
 
-        if transcript is None:
-            await ctx.send("Failed to generate transcript.")
+            buffer = BytesIO(cont.encode('utf-8'))
+            file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.html')
+            channel = interaction.guild.get_channel(transcript_channel)  # Transcript Logs
+            await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file)
+
+            messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
+            cont = ''
+            for i in range(len(messages)):
+                if messages[i].author.bot == True:
+                    continue
+                cont = cont + f'{messages[i].author.name} : {messages[i].content}\n'
+
+            buffer = BytesIO(cont.encode('utf-8'))
+            file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.txt')
+
+            await interaction.response.send_message('Ticket transcripted successfully!')
+        except Exception as e:
+            print(e)
+        channels = db.column('SELECT CHANNEL FROM orders')
+        if interaction.channel.id in channels:
+            pass
+        else:
+            await interaction.send('This is not a ticket in my records.')
             return
-
-        # Create a Markdown formatted string with only message content
-        markdown_content = ""
-
-        for message in transcript:
-            content = message['content']
-
-            markdown_content += f"{content}\n"
-
-        # Create a filename for the transcript
-        filename = f"transcript-{ctx.channel.name}.md"
-
-        # Send the transcript as a Markdown file
-        await ctx.send(file=discord.File(io.BytesIO(markdown_content.encode()), filename=filename))
-        await ctx.send("Transcript has been sent.")
+        db.exec('DELETE FROM orders WHERE CHANNEL=?', interaction.channel.id)
+        db.commit()
+        self.transcript()
+        await interaction.send('Deleting channel in 10 seconds.')
+        await asyncio.sleep(10)
+        await interaction.channel.delete()
+        
 
 
     @commands.command(name='assign')
