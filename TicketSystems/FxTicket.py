@@ -238,7 +238,7 @@ class TRANSCRIPT(discord.ui.View):
             print(e)
 
     @discord.ui.button(label='CLOSE', style=discord.ButtonStyle.danger, custom_id='CLOSE:RED')
-    async def closeticket(self, interaction=discord.Interaction, button=discord.ui.Button, ):
+    async def delticket(self, interaction=discord.Interaction, button=discord.ui.Button, ):
         """```Deletes a Ticket Channel.```"""
         try:
             channels = db.column('SELECT CHANNEL FROM orders')
