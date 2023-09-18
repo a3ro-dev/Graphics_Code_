@@ -167,7 +167,6 @@ class Buttons(discord.ui.View):
                               color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         message = await channel.send(content=f'{client.mention} | {ticket_supp.mention}', embed=embed)# view=TRANSCRIPT()
-        message.pin()
         thread = await message.create_thread(name=f"GFX-{client.name} private discussion", auto_archive_duration=60)
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
@@ -197,7 +196,6 @@ class Buttons(discord.ui.View):
                               color=cfg.CLR)
         embed.timestamp = discord.utils.utcnow()
         message = await channel.send(content=f'{client.mention} |', embed=embed) # view=TRANSCRIPT()
-        message.pin()
         thread = await message.create_thread(name=f"VFX-{client.name} private discussion", auto_archive_duration=60)
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
                 0, datetime.datetime.now().strftime("%d / %m / %Y"))
