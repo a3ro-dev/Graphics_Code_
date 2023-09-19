@@ -227,6 +227,7 @@ class TRANSCRIPT(discord.ui.View):
             embed.add_field(name='Client', value=client, inline=True)
             embed.add_field(name='Type', value=typeoftick, inline=True)
             embed.add_field(name='Designer', value=artist, inline=True)
+            embed.set_image(url='https://media.discordapp.net/attachments/1150321238997205002/1153710353126006886/transcript.png')
             await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file, embed=embed)
 
             messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
