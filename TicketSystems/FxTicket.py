@@ -209,6 +209,9 @@ class TRANSCRIPT(discord.ui.View):
     @discord.ui.button(label='Transcript', style=discord.ButtonStyle.grey, custom_id='transcript:blue')
     async def transcript(self, interaction: discord.Interaction, button: discord.ui.Button, transcript_channel = cfg.TRANSCRIPTS):
         """Generates Transcript of an Order Ticket"""
+        client = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', interaction.channel.id)
+        artist = db.field("SELECT ARTIST FROM orders WHERE CHANNEL = ?", interaction.channel.id)
+        typeoftick = interaction.channel.name[:3]
         try:
             messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
             cont = ''
@@ -220,7 +223,11 @@ class TRANSCRIPT(discord.ui.View):
             buffer = BytesIO(cont.encode('utf-8'))
             file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.html')
             channel = interaction.guild.get_channel(transcript_channel)  # Transcript Logs
-            await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file)
+            embed = discord.Embed(color=cfg.CLR, title=f'Transcript- {interaction.channel.name}', timestamp=discord.utils.utcnow)
+            embed.add_field(name='Client', value=client, inline=True)
+            embed.add_field(name='Type', value=typeoftick, inline=True)
+            embed.add_field(name='Designer', value=artist, inline=True)
+            await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file, embed=embed)
 
             messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
             cont = ''
@@ -231,7 +238,6 @@ class TRANSCRIPT(discord.ui.View):
 
             buffer = BytesIO(cont.encode('utf-8'))
             file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.txt')
-
             await interaction.response.send_message('Ticket transcripted successfully!', ephemeral=True)
         except Exception as e:
             print(e)
