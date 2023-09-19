@@ -209,10 +209,10 @@ class TRANSCRIPT(discord.ui.View):
     @discord.ui.button(label='Transcript', style=discord.ButtonStyle.grey, custom_id='transcript:blue')
     async def transcript(self, interaction: discord.Interaction, button: discord.ui.Button, transcript_channel = cfg.TRANSCRIPTS):
         """Generates Transcript of an Order Ticket"""
-        client = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', interaction.channel.id)
-        artist = db.field("SELECT ARTIST FROM orders WHERE CHANNEL = ?", interaction.channel.id)
-        typeoftick = interaction.channel.name[:3]
         try:
+            client = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', interaction.channel.id)
+            artist = db.field("SELECT ARTIST FROM orders WHERE CHANNEL = ?", interaction.channel.id)
+            typeoftick = interaction.channel.name[:3]
             messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
             cont = ''
             for i in range(len(messages)):
