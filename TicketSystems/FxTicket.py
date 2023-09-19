@@ -236,7 +236,7 @@ class TRANSCRIPT(discord.ui.View):
         except Exception as e:
             print(e)
 
-    @discord.ui.button(label='Close', style=discord.ButtonStyle.danger, custom_id='del:red')
+    @discord.ui.button(label='Close', style=discord.ButtonStyle.danger, custom_id='CLOSE:RED')
     async def delticket(self, interaction=discord.Interaction, button=discord.ui.Button, ):
         """```Deletes a Ticket Channel.```"""
         try:
