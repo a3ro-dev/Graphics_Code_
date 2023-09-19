@@ -7,7 +7,7 @@ import config as cfg
 from db import db
 from datetime import datetime
 from io import BytesIO
-import datetime
+import datetime as d
 
 # Receipt Format
 
@@ -169,7 +169,7 @@ class Buttons(discord.ui.View):
         await message.pin()
         thread = await message.create_thread(name=f"GFX-{client.name} private discussion", auto_archive_duration=60)
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
-                0, datetime.datetime.now().strftime("%d / %m / %Y"))
+                0, d.datetime.now().strftime("%d / %m / %Y"))
         db.commit()
 
     @discord.ui.button(emoji='<:vfx:1064863743802081280>', style=discord.ButtonStyle.gray, custom_id='Gray:VFX')
@@ -199,7 +199,7 @@ class Buttons(discord.ui.View):
         await message.pin()
         thread = await message.create_thread(name=f"VFX-{client.name} private discussion", auto_archive_duration=60)
         db.exec(f'INSERT INTO orders (CHANNEL, CLIENT, ARTIST, PLACEMENT) VALUES (?, ?, ?, ?)', channel.id, client.id,
-                0, datetime.datetime.now().strftime("%d / %m / %Y"))
+                0, d.datetime.now().strftime("%d / %m / %Y"))
         db.commit()
 
 class TRANSCRIPT(discord.ui.View):
