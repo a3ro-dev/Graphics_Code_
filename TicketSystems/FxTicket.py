@@ -212,6 +212,8 @@ class TRANSCRIPT(discord.ui.View):
         try:
             client = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', interaction.channel.id)
             artist = db.field("SELECT ARTIST FROM orders WHERE CHANNEL = ?", interaction.channel.id)
+            if artist == 0:
+                artist = "None"
             typeoftick = interaction.channel.name[:3]
             messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
             cont = ''
@@ -224,9 +226,9 @@ class TRANSCRIPT(discord.ui.View):
             file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.html')
             channel = interaction.guild.get_channel(transcript_channel)  # Transcript Logs
             embed = discord.Embed(color=cfg.CLR, title=f'Transcript- {interaction.channel.name}')
-            embed.add_field(name='Client', value=client, inline=True)
+            embed.add_field(name='Client', value=f'<@{client}>', inline=True)
             embed.add_field(name='Type', value=typeoftick, inline=True)
-            embed.add_field(name='Designer', value=artist, inline=True) # embed
+            embed.add_field(name='Designer', value=f'<@{artist}>', inline=True) # embed
             embed.set_image(url='https://media.discordapp.net/attachments/1150321238997205002/1153710353126006886/transcript.png')
             await channel.send(content = f"Transcript for {interaction.channel.name} ",file=file, embed=embed)
 
