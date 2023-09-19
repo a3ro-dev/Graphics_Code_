@@ -223,7 +223,7 @@ class TRANSCRIPT(discord.ui.View):
             buffer = BytesIO(cont.encode('utf-8'))
             file = discord.File(buffer, filename=f'transcript-{interaction.channel.name}.html')
             channel = interaction.guild.get_channel(transcript_channel)  # Transcript Logs
-            embed = discord.Embed(color=cfg.CLR, title=f'Transcript- {interaction.channel.name}', timestamp=datetime.datetime.utcnow())
+            embed = discord.Embed(color=cfg.CLR, title=f'Transcript- {interaction.channel.name}', timestamp=d.datetime.utcnow())
             embed.add_field(name='Client', value=client, inline=True)
             embed.add_field(name='Type', value=typeoftick, inline=True)
             embed.add_field(name='Designer', value=artist, inline=True)
