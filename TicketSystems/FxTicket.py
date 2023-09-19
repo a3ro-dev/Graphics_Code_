@@ -248,7 +248,6 @@ class TRANSCRIPT(discord.ui.View):
                 return
             db.exec('DELETE FROM orders WHERE CHANNEL=?', interaction.channel.id)
             db.commit()
-            self.transcript()
             await interaction.response.send_message('Deleting channel in 10 seconds.')
             await asyncio.sleep(10)
             await interaction.channel.delete()
@@ -426,7 +425,6 @@ class Orders(commands.Cog):
             return
         db.exec('DELETE FROM orders WHERE CHANNEL=?', ctx.channel.id)
         db.commit()
-        self.transcript()
         await ctx.send('Deleting channel in 10 seconds.')
         await asyncio.sleep(10)
         await ctx.channel.delete()
