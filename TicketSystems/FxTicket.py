@@ -212,8 +212,6 @@ class TRANSCRIPT(discord.ui.View):
         try:
             client = db.field('SELECT CLIENT FROM orders WHERE CHANNEL = ?', interaction.channel.id)
             artist = db.field("SELECT ARTIST FROM orders WHERE CHANNEL = ?", interaction.channel.id)
-            if artist == 0:
-                artist = "None"
             typeoftick = interaction.channel.name[:3]
             messages = [message async for message in interaction.channel.history(oldest_first=True, limit=999999)]
             cont = ''
