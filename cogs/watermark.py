@@ -42,18 +42,16 @@ class Watermark(commands.Cog):
             image = Image.open(image_data)
             watermark = Image.open("assets/wm.png")
 
-            # Calculate the watermark size based on the larger dimension of the input image
+            # Get image dimensions and calculate the watermark size based on the shorter side
             input_width, input_height = image.size
-            watermark_width, watermark_height = watermark.size
+            min_dimension = min(input_width, input_height)
 
             # Calculate the scaling ratio for the watermark
-            width_ratio = input_width / watermark_width
-            height_ratio = input_height / watermark_height
-            min_ratio = min(width_ratio, height_ratio)
+            scale_factor = min_dimension / 10  # Define a scale factor (you can adjust this value)
 
-            # Resize the watermark based on the minimum ratio to maintain proportion
-            new_width = int(watermark_width * min_ratio)
-            new_height = int(watermark_height * min_ratio)
+            # Resize the watermark based on the scale factor
+            new_width = int(watermark.width * scale_factor)
+            new_height = int(watermark.height * scale_factor)
             watermark = watermark.resize((new_width, new_height))
 
             # Calculate the position to paste the watermark at the center
