@@ -11,7 +11,7 @@ class Watermark(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.hybrid_command()
     async def watermark(self, ctx, image_link: str = None):
         """
         Apply a watermark to an uploaded image or an image from a provided link.
