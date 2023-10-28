@@ -42,10 +42,10 @@ class Watermark(commands.Cog):
             image = Image.open(image_data)
             watermark = Image.open("assets/wm.png")
 
-            # Calculate the watermark size based on the larger dimension of the input image
+            # Calculate the watermark size based on the image dimensions
             input_width, input_height = image.size
-            max_dimension = max(input_width, input_height)
-            ratio = max_dimension / 1024  # Assuming the watermark is in 1024x1024 resolution
+            min_dimension = min(input_width, input_height)
+            ratio = 0.15 if min_dimension <= 55 else 70 / min_dimension  # Set 15% margin or keep a 70px watermark size
             new_width = int(watermark.width * ratio)
             new_height = int(watermark.height * ratio)
             watermark = watermark.resize((new_width, new_height))
@@ -58,7 +58,7 @@ class Watermark(commands.Cog):
                 watermark
             )
 
-            # Apply watermark on the image
+            # Apply watermark on the image with 40% opacity
             watermarked_image = Image.alpha_composite(image.convert("RGBA"), transparent)
             watermarked_image = watermarked_image.convert("RGB")
 
