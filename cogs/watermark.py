@@ -5,13 +5,10 @@ import requests
 from io import BytesIO
 
 class Watermark(commands.Cog):
-    """
-    Cog for handling watermark related requests.
-    """
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.hybrid_command()
+    @commands.command()
     async def watermark(self, ctx, image_link: str = None):
         """
         Apply a watermark to an uploaded image or an image from a provided link.
@@ -22,6 +19,7 @@ class Watermark(commands.Cog):
 
         The command checks for uploaded images or provided links. It fetches the image and applies a watermark.
         """
+
         # Check if an image link or an attachment is provided
         if not image_link and len(ctx.message.attachments) == 0:
             await ctx.send("Please upload an image or provide an image link.")
@@ -44,16 +42,19 @@ class Watermark(commands.Cog):
             image = Image.open(image_data)
             watermark = Image.open("assets/wm.png")
 
-            # Adjust the watermark size based on the image
+            # Calculate the watermark size based on the larger dimension of the input image
             input_width, input_height = image.size
-            watermark = watermark.resize((input_width // 2, input_height // 2))
+            max_dimension = max(input_width, input_height)
+            ratio = max_dimension / 1024  # Assuming the watermark is in 1024x1024 resolution
+            new_width = int(watermark.width * ratio)
+            new_height = int(watermark.height * ratio)
+            watermark = watermark.resize((new_width, new_height))
 
             # Create a transparent layer to paste the watermark onto
-            watermark_width, watermark_height = watermark.size
             transparent = Image.new('RGBA', (input_width, input_height), (0, 0, 0, 0))
             transparent.paste(
                 watermark,
-                ((input_width - watermark_width) // 2, (input_height - watermark_height) // 2),
+                ((input_width - new_width) // 2, (input_height - new_height) // 2),
                 watermark
             )
 
