@@ -42,23 +42,29 @@ class Watermark(commands.Cog):
             image = Image.open(image_data)
             watermark = Image.open("assets/wm.png")
 
-            # Calculate the watermark size based on the image dimensions
+            # Calculate the watermark size based on the larger dimension of the input image
             input_width, input_height = image.size
-            min_dimension = min(input_width, input_height)
-            ratio = 0.15 if min_dimension <= 55 else 70 / min_dimension  # Set 15% margin or keep a 70px watermark size
-            new_width = int(watermark.width * ratio)
-            new_height = int(watermark.height * ratio)
+            watermark_width, watermark_height = watermark.size
+
+            # Calculate the scaling ratio for the watermark
+            width_ratio = input_width / watermark_width
+            height_ratio = input_height / watermark_height
+            min_ratio = min(width_ratio, height_ratio)
+
+            # Resize the watermark based on the minimum ratio to maintain proportion
+            new_width = int(watermark_width * min_ratio)
+            new_height = int(watermark_height * min_ratio)
             watermark = watermark.resize((new_width, new_height))
+
+            # Calculate the position to paste the watermark at the center
+            paste_x = (input_width - new_width) // 2
+            paste_y = (input_height - new_height) // 2
 
             # Create a transparent layer to paste the watermark onto
             transparent = Image.new('RGBA', (input_width, input_height), (0, 0, 0, 0))
-            transparent.paste(
-                watermark,
-                ((input_width - new_width) // 2, (input_height - new_height) // 2),
-                watermark
-            )
+            transparent.paste(watermark, (paste_x, paste_y), watermark)
 
-            # Apply watermark on the image with 40% opacity
+            # Apply watermark on the image
             watermarked_image = Image.alpha_composite(image.convert("RGBA"), transparent)
             watermarked_image = watermarked_image.convert("RGB")
 
