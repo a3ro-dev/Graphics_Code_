@@ -9,40 +9,6 @@ class WELCOME(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # @commands.Cog.listener()
-    # async def on_member_join(self, member: discord.Member):
-    #     button1 = Button(label='Rules', url="https://discord.com/channels/905665593267609631/905678231896723486",
-    #                      emoji='<:Rules:1026538712147972216>')
-    #
-    #     button2 = Button(label='Self-Roles',
-    #                      url="https://discord.com/channels/905665593267609631/992660613790715925",
-    #                      emoji='<:self_role:1026674149709590579>')
-    #
-    #     button3 = Button(label='Store',
-    #                      url="https://discord.com/channels/905665593267609631/992660625312460860",
-    #                      emoji='<:store:1026538835951231096>')
-    #
-    #     view = View()
-    #     view.add_item(button1)
-    #     view.add_item(button2)
-    #     view.add_item(button3)
-    #     description = (f'{member.mention} just joined the server. We now have {len(member.guild.members)}\n\n'
-    #                    f'Hey, {member.mention} Thanks for joining **{member.guild.name}**\n\n'
-    #                    f'Make sure to check <#{int(cfg.RULES)}>\n'
-    #                    f'Order FX over at <#{int(cfg.ORDER)}>\n\n'
-    #                    f'Thank you for joining.\n'
-    #                    f'Hope you like your stay here.')
-    #
-    #     embed = discord.Embed(
-    #         title='__Graphics Code__', description=description, color=discord.Color(0xFFFFFF))
-    #     embed.timestamp = discord.utils.utcnow()
-    #     embed.set_footer(
-    #         text=f'{member.guild.name} | {member.guild.id}', icon_url=member.guild.icon.url)
-    #     # embed.set_thumbnail(url=member.guild.icon.url)
-    #     embed.set_image(
-    #         url='https://media.discordapp.net/attachments/992660600746422312/1026378384437161984/welcome.gif')
-    #     channel = member.guild.get_channel(cfg.WELCOME)
-    #     await channel.send(f"{member.mention}", embed=embed, view=view)
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
