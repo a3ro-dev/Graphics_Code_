@@ -5,6 +5,7 @@ import requests
 from io import BytesIO
 import concurrent.futures
 import time
+import config as cfg
 
 class Watermark(commands.Cog):
     def __init__(self, bot):
