@@ -7,6 +7,8 @@ import concurrent.futures
 import time
 import config as cfg
 
+CLR = cfg.CLR  # Set your color code
+
 class Watermark(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -67,7 +69,7 @@ class Watermark(commands.Cog):
             image_data = BytesIO(await attachment.read())
             image = Image.open(image_data)
 
-        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=cfg.CLR)
+        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=CLR)
         
         try:
             with concurrent.futures.ThreadPoolExecutor() as executor:
