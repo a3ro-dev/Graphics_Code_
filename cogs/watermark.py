@@ -44,7 +44,7 @@ class Watermark(commands.Cog):
 
             # Calculate the watermark size based on the image's resolution
             input_width, input_height = image.size
-            watermark = watermark.resize((input_width // 3, input_height // 3))
+            watermark = watermark.resize((input_width // 2, input_height // 2))
 
             # Calculate the position to paste the watermark at the center
             watermark_width, watermark_height = watermark.size
