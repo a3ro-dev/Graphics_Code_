@@ -10,6 +10,16 @@ class Watermark(commands.Cog):
 
     @commands.command()
     async def watermark(self, ctx, image_link: str = None):
+        """
+        Apply a watermark to an uploaded image or an image from a provided link.
+
+        Parameters:
+        - ctx (commands.Context): The context of the command invocation.
+        - image_link (str): Optional. The link to an image for watermarking.
+
+        The command checks for uploaded images or provided links. It fetches the image and applies a watermark.
+        """
+
         # Check if an image link or an attachment is provided
         if not image_link and len(ctx.message.attachments) == 0:
             await ctx.send("Please upload an image or provide an image link.")
