@@ -78,7 +78,7 @@ class Watermark(commands.Cog):
 
                 diagnostic_embed.add_field(name="Watermark Resolution", value=str(watermark_reso))
                 diagnostic_embed.add_field(name="Image Resolution", value=str(image_reso))
-                diagnostic_embed.add_field(name="Watermark Application Time", value=f"{watermark_time:.3f} seconds")
+                diagnostic_embed.add_field(name="Watermark Application Time", value=str(f"{watermark_time:.3f} seconds"))
 
                 img_byte_array = BytesIO()
                 watermarked_image.save(img_byte_array, format='PNG')
