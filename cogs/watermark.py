@@ -3,6 +3,9 @@ from discord.ext import commands
 from PIL import Image
 import requests
 from io import BytesIO
+import concurrent.futures
+import time
+import config as cfg
 
 class Watermark(commands.Cog):
     def __init__(self, bot):
@@ -20,48 +23,72 @@ class Watermark(commands.Cog):
         The command checks for uploaded images or provided links. It fetches the image and applies a watermark.
         """
 
-        # Check if an image link or an attachment is provided
-        if not image_link and len(ctx.message.attachments) == 0:
-            await ctx.send("Please upload an image or provide an image link.")
-            return
+        # Function to apply watermark and collect diagnostic details
+        def apply_watermark(image):
+            watermark_reso = watermark.size
+            image_reso = image.size
 
-        # If an image link is provided, fetch the image using the link
+            start_time = time.time()
+            # Apply the watermark
+            try:
+                watermark = Image.open("assets/wm.png")
+                input_width, input_height = image.size
+                watermark = watermark.resize((input_width // 1.5, input_height // 1.5))
+
+                watermark_width, watermark_height = watermark.size
+                paste_x = (input_width - watermark_width) // 2
+                paste_y = (input_height - watermark_height) // 2
+
+                transparent = Image.new('RGBA', (input_width, input_height), (0, 0, 0, 0))
+                transparent.paste(watermark, (paste_x, paste_y), watermark)
+
+                watermarked_image = Image.alpha_composite(image.convert("RGBA"), transparent)
+                watermarked_image = watermarked_image.convert("RGB")
+
+                # Save the watermarked image
+                watermarked_image.save("watermarked_image.png")
+                watermark_time = time.time() - start_time
+
+                return watermarked_image, watermark_reso, image_reso, watermark_time
+            except Exception as e:
+                return f"An error occurred: {e}", watermark_reso, image_reso, 0
+
+        # Fetch the image and process with threading
         if image_link:
-            response = requests.get(image_link)
+            response = requests.get(image_link, stream=True)
             if response.status_code != 200:
                 await ctx.send("Failed to fetch the image from the provided link.")
                 return
-            image_data = BytesIO(response.content)
+            image_data = BytesIO()
+            for chunk in response.iter_content(chunk_size=1024):
+                image_data.write(chunk)
+            image_data.seek(0)
+            image = Image.open(image_data)
         else:
-            # If an image is uploaded, retrieve the attachment
             attachment = ctx.message.attachments[0]
             image_data = BytesIO(await attachment.read())
-
-        try:
-            # Open the image and the watermark
             image = Image.open(image_data)
-            watermark = Image.open("assets/wm.png")
 
-            # Calculate the watermark size based on the image's resolution
-            input_width, input_height = image.size
-            watermark = watermark.resize((input_width // 2, input_height // 2))
+        watermark = Image.open("assets/wm.png")
+        watermark = watermark.resize((image.width // 3, image.height // 3))
 
-            # Calculate the position to paste the watermark at the center
-            watermark_width, watermark_height = watermark.size
-            paste_x = (input_width - watermark_width) // 2
-            paste_y = (input_height - watermark_height) // 2
+        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=cfg.CLR)
+        
+        try:
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                result = await self.bot.loop.run_in_executor(executor, apply_watermark, image)
+            
+            watermarked_image, watermark_reso, image_reso, watermark_time = result
 
-            # Create a transparent layer to paste the watermark onto
-            transparent = Image.new('RGBA', (input_width, input_height), (0, 0, 0, 0))
-            transparent.paste(watermark, (paste_x, paste_y), watermark)
+            diagnostic_embed.add_field(name="Watermark Resolution", value=str(watermark_reso))
+            diagnostic_embed.add_field(name="Image Resolution", value=str(image_reso))
+            diagnostic_embed.add_field(name="Watermark Application Time", value=f"{watermark_time:.3f} seconds")
 
-            # Apply watermark on the image
-            watermarked_image = Image.alpha_composite(image.convert("RGBA"), transparent)
-            watermarked_image = watermarked_image.convert("RGB")
+            img_byte_array = BytesIO()
+            watermarked_image.save(img_byte_array, format='PNG')
+            img_byte_array.seek(0)
 
-            # Save the watermarked image and send it in the chat
-            watermarked_image.save("watermarked_image.png")
-            await ctx.send(file=discord.File("watermarked_image.png"))
+            await ctx.send(embed=diagnostic_embed, file=discord.File(img_byte_array, filename="watermarked_image.png"))
 
         except Exception as e:
             await ctx.send(f"An error occurred: {e}")
