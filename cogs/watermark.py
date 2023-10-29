@@ -5,7 +5,6 @@ import requests
 from io import BytesIO
 import concurrent.futures
 import time
-import config as cfg
 
 class Watermark(commands.Cog):
     def __init__(self, bot):
@@ -25,13 +24,13 @@ class Watermark(commands.Cog):
 
         # Function to apply watermark and collect diagnostic details
         def apply_watermark(image):
+            watermark = Image.open("assets/wm.png")
             watermark_reso = watermark.size
             image_reso = image.size
 
             start_time = time.time()
             # Apply the watermark
             try:
-                watermark = Image.open("assets/wm.png")
                 input_width, input_height = image.size
                 watermark = watermark.resize((input_width // 1.5, input_height // 1.5))
 
@@ -69,10 +68,7 @@ class Watermark(commands.Cog):
             image_data = BytesIO(await attachment.read())
             image = Image.open(image_data)
 
-        watermark = Image.open("assets/wm.png")
-        watermark = watermark.resize((image.width // 3, image.height // 3))
-
-        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=cfg.CLR)
+        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=0x7289DA)
         
         try:
             with concurrent.futures.ThreadPoolExecutor() as executor:
