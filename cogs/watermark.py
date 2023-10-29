@@ -44,8 +44,6 @@ class Watermark(commands.Cog):
                 watermarked_image = Image.alpha_composite(image.convert("RGBA"), transparent)
                 watermarked_image = watermarked_image.convert("RGB")
 
-                # Save the watermarked image
-                watermarked_image.save("watermarked_image.png")
                 watermark_time = time.time() - start_time
 
                 return watermarked_image, watermark_reso, image_reso, watermark_time
@@ -68,23 +66,26 @@ class Watermark(commands.Cog):
             image_data = BytesIO(await attachment.read())
             image = Image.open(image_data)
 
-        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=0x7289DA)
+        diagnostic_embed = discord.Embed(title="Watermark Diagnostics", color=cfg.CLR)
         
         try:
             with concurrent.futures.ThreadPoolExecutor() as executor:
                 result = await self.bot.loop.run_in_executor(executor, apply_watermark, image)
             
-            watermarked_image, watermark_reso, image_reso, watermark_time = result
+            if isinstance(result[0], Image.Image):
+                watermarked_image, watermark_reso, image_reso, watermark_time = result
 
-            diagnostic_embed.add_field(name="Watermark Resolution", value=str(watermark_reso))
-            diagnostic_embed.add_field(name="Image Resolution", value=str(image_reso))
-            diagnostic_embed.add_field(name="Watermark Application Time", value=f"{watermark_time:.3f} seconds")
+                diagnostic_embed.add_field(name="Watermark Resolution", value=str(watermark_reso))
+                diagnostic_embed.add_field(name="Image Resolution", value=str(image_reso))
+                diagnostic_embed.add_field(name="Watermark Application Time", value=f"{watermark_time:.3f} seconds")
 
-            img_byte_array = BytesIO()
-            watermarked_image.save(img_byte_array, format='PNG')
-            img_byte_array.seek(0)
+                img_byte_array = BytesIO()
+                watermarked_image.save(img_byte_array, format='PNG')
+                img_byte_array.seek(0)
 
-            await ctx.send(embed=diagnostic_embed, file=discord.File(img_byte_array, filename="watermarked_image.png"))
+                await ctx.send(embed=diagnostic_embed, file=discord.File(img_byte_array, filename="watermarked_image.png"))
+            else:
+                await ctx.send(result[0])
 
         except Exception as e:
             await ctx.send(f"An error occurred: {e}")
