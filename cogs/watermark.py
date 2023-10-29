@@ -42,18 +42,18 @@ class Watermark(commands.Cog):
             image = Image.open(image_data)
             watermark = Image.open("assets/wm.png")
 
-            # Adjust the watermark size based on the image
+            # Calculate the watermark size based on the image's resolution
             input_width, input_height = image.size
-            watermark = watermark.resize((input_width // 2, input_height // 2))
+            watermark = watermark.resize((input_width // 3, input_height // 3))
+
+            # Calculate the position to paste the watermark at the center
+            watermark_width, watermark_height = watermark.size
+            paste_x = (input_width - watermark_width) // 2
+            paste_y = (input_height - watermark_height) // 2
 
             # Create a transparent layer to paste the watermark onto
-            watermark_width, watermark_height = watermark.size
             transparent = Image.new('RGBA', (input_width, input_height), (0, 0, 0, 0))
-            transparent.paste(
-                watermark,
-                ((input_width - watermark_width) // 2, (input_height - watermark_height) // 2),
-                watermark
-            )
+            transparent.paste(watermark, (paste_x, paste_y), watermark)
 
             # Apply watermark on the image
             watermarked_image = Image.alpha_composite(image.convert("RGBA"), transparent)
