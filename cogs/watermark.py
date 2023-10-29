@@ -20,6 +20,9 @@ class Watermark(commands.Cog):
         The command checks for uploaded images or provided links. It fetches the image and applies a watermark.
         """
 
+        # Maximum allowed file size in bytes
+        MAX_FILE_SIZE = 8 * 1024 * 1024  # 8 MB
+
         # Check if an image link or an attachment is provided
         if not image_link and len(ctx.message.attachments) == 0:
             await ctx.send("Please upload an image or provide an image link.")
@@ -72,12 +75,18 @@ class Watermark(commands.Cog):
             if response.status_code != 200:
                 await ctx.send("Failed to fetch the image from the provided link.")
                 return
+            if int(response.headers.get('content-length', 0)) > MAX_FILE_SIZE:
+                await ctx.send("The file size exceeds the maximum allowed limit.")
+                return
             image_data = BytesIO(response.content)
             image = Image.open(image_data)
             await process_image(image)
         else:
             # If an image is uploaded, retrieve the attachment
             attachment = ctx.message.attachments[0]
+            if attachment.size > MAX_FILE_SIZE:
+                await ctx.send("The file size exceeds the maximum allowed limit.")
+                return
             image_data = BytesIO(await attachment.read())
             image = Image.open(image_data)
             await process_image(image)
