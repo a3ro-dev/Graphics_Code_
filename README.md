@@ -45,7 +45,8 @@ This feature allows for a streamlined and user-friendly way of placing orders di
 2. Install the required Python packages using pip:
 
 ```sh
-pip install -r requirements.txt
+pip install -r requirements.txT
+```
 
 ## License
 
