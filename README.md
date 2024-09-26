@@ -1,7 +1,5 @@
 # Graphics Code
 
-## Description
-
 This is a Discord bot project written in Python. It uses the discord.py library and includes various features such as games, custom commands, ticket systems, and more.
 
 ## Authors
